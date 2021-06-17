@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 
 Route::get('/',[HomeController::class,'viewHomePage'])->name('home');
+Route::get('/check',[DashboardController::class,'index'])->name('check');
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::view('/dashboard','dashboard')->name('dashboard');
@@ -20,6 +22,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     });
 
 });
+
+Route::get('/blog',[\App\Http\Controllers\BlogController::class,'index']);
 
 
 

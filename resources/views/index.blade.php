@@ -191,7 +191,7 @@
     <!-- Main PX -->
     <div class="container md:mt-4 px-3 mx-auto grid text-gray-700 dark:text-gray-200">
 
-        <div class="md:max-w-5xl md:mx-auto space-y-12 mb-36">
+        <div id="intro" class="md:max-w-5xl md:mx-auto space-y-12 mb-36">
 
             <div class="mt-3">
                 <div class="md:grid md:grid-cols-2">
@@ -287,6 +287,7 @@
                         </div>
                         @foreach($data['education'] as $key => $education)
                         <!-- Education details -->
+
                         <div class="flex ml-2.5">
                             <svg viewBox="0 0 12 12" class="w-3 h-8 mr-6 overflow-visible hidden md:block">
                                 <circle cx="6" cy="6" r="6" fill="currentColor"></circle>
@@ -421,93 +422,49 @@
 
             <div class="space-y-10">
                 <div class="text-center">
-                    <h4 class="text-purple-400 text-xs font-semibold tracking-wide">Why Choose Me</h4>
-                    <h2 class="md:text-2xl text-xl font-bold">My Expertise Area</h2>
+                    <h4 class="text-purple-400 text-xs font-semibold tracking-wide">{{$data['expertise_slug']}}</h4>
+                    <h2 class="md:text-2xl text-xl font-bold">{{$data['expertise_title']}}</h2>
                 </div>
                 <div class="flex">
                     <div class="md:flex-1 space-y-5 md:px-12 w-full">
                         <!-- Expertise Area Single Item -->
+                        @foreach($data['expertise_left'] as $expertise)
                         <div class="overflow-hidden space-y-2.5">
                             <div class="flex justify-between text-xs md:text-sm font-bold">
-                                <h3 class="">Facebook Marketing</h3>
-                                <span>50%</span>
+                                <h3 class="">{{$expertise['title']}}</h3>
+                                <span>{{$expertise['value']}}</span>
                             </div>
                             <div class="bg-gray-200 h-3 overflow-hidden w-full rounded-sm">
-                                <div class="bg-purple-400 h-3 overflow-hidden" style="width:50%">
+                                <div class="bg-purple-400 h-3 overflow-hidden" style="width:{{$expertise['value']}}">
                                 </div>
                             </div>
                         </div>
+                        @endforeach
                     </div>
                     <div class="md:flex-1 space-y-5 md:px-12 px-4 w-full">
                         <!-- Expertise Area Single Item -->
-                        <div class="overflow-hidden space-y-2.5">
-                            <div class="flex justify-between text-xs md:text-sm font-bold">
-                                <h3 class="">Facebook Marketing</h3>
-                                <span>25%</span>
-                            </div>
-                            <div class="bg-gray-200 h-3 overflow-hidden w-full rounded-sm">
-                                <div class="bg-purple-400 h-3 overflow-hidden" style="width:25%">
+                        @foreach($data['expertise_right'] as $expertise)
+                            <div class="overflow-hidden space-y-2.5">
+                                <div class="flex justify-between text-xs md:text-sm font-bold">
+                                    <h3 class="">{{$expertise['title']}}</h3>
+                                    <span>{{$expertise['value']}}</span>
+                                </div>
+                                <div class="bg-gray-200 h-3 overflow-hidden w-full rounded-sm">
+                                    <div class="bg-purple-400 h-3 overflow-hidden" style="width:{{$expertise['value']}}">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
             <!-- Recent Works -->
-            <div class="space-y-10">
-                <div class="text-center">
-                    <h4 class="text-purple-400 text-xs font-semibold tracking-wide">My Portfolio</h4>
-                    <h2 class="md:text-2xl text-xl font-bold">Recent Works</h2>
-                </div>
-
-                <div class="flex uppercase p-1.5 border rounded-full space-x-2 justify-center w-auto text-xs md:text-sm tracking-wider">
-                    <span class="px-2 md:px-4 rounded-full py-1.5 cursor-pointer bg-purple-400 text-white font-semibold">All</span>
-                    <span class="px-2 md:px-4 rounded-full py-1.5 cursor-pointer hover:bg-purple-400 hover:text-white transition-all ease-in-out duration-300">HTML</span>
-                    <span class="px-2 md:px-4 rounded-full py-1.5 cursor-pointer hover:bg-purple-400 hover:text-white transition-all ease-in-out duration-300">Laravel</span>
-                    <span class="px-2 md:px-4 rounded-full py-1.5 cursor-pointer hover:bg-purple-400 hover:text-white transition-all ease-in-out duration-300">VUE</span>
-                    <span class="px-2 md:px-4 rounded-full py-1.5 cursor-pointer hover:bg-purple-400 hover:text-white transition-all ease-in-out duration-300">PHP</span>
-                </div>
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mt-4">
-
-
-                    <!-- Single Project -->
-                    <div class="group cursor-pointer h-48 md:h-80 overflow-hidden rounded-sm border shadow">
-                        <div class="relative ">
-                            <img src="images/project_1.png" alt="" class="h-48 md:h-80 w-full object-cover object-top transform group-hover:scale-110 dark:opacity-90 group-hover:transition-all ease-in-out duration-300">
-                            <!-- Text Overlay on Image -->
-                            <div class="absolute h-48 md:h-80 w-full bg-purple-500 dark:bg-purple-600  z-20 inset-0 dark:bg-opacity-80 bg-opacity-70 hidden group-hover:block
-                                        transition ease-in-out duration-1000 rounded-sm dark:text-gray-500">
-                                <div class="flex h-48 md:h-80 justify-center items-center flex-col px-2 md:px-8 space-y-2">
-                                    <div class="flex space-x-3.5">
-                                        <a href="#" class="h-8 w-8 flex justify-center items-center bg-white">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                                            </svg>
-                                        </a>
-                                        <a href="#" class="h-8 w-8 flex justify-center items-center bg-white">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                                            </svg>
-                                        </a>
-                                    </div>
-                                    <div class="text-center text-sm text-white font-bold">
-                                        <h4>Car Rental Management System Using Laravel</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-
-
-                </div>
-            </div>
+            @livewire('portfolio.home.recent-work-section',['data'=> $data_pass])
             <!-- Contact -->
             <div class="space-y-10">
                 <div class="text-center">
-                    <h4 class="text-purple-400 text-xs font-semibold tracking-wide">Get In Touch</h4>
-                    <h2 class="md:text-2xl text-xl font-bold">Contact With Me</h2>
+                    <h4 class="text-purple-400 text-xs font-semibold tracking-wide">{{$data['contact_slug']}}</h4>
+                    <h2 class="md:text-2xl text-xl font-bold">{{$data['contact_title']}}</h2>
                 </div>
 
                 <div class="mb-32">
@@ -549,15 +506,17 @@
                                         <div class="w-10 h-10 bg-purple-400 rounded-full text-white
                                                         flex justify-center items-center shadow " href="#" title="Twitter Profile">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                                <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                                                @php
+                                                echo($data['contact_details']['phone_icon']);
+                                                @endphp
                                             </svg>
                                         </div>
                                     </div>
                                     <div class="flex flex-col space-y-1.5">
                                         <h3 class="text-sm font-bold ">Phone</h3>
-                                        <a href="tel:+8801781844900" class="text-xs font-semibold md:text-sm text-gray-500">+88 01781844900</a>
-                                        <a href="tel:+8801781844900" class="text-xs font-semibold md:text-sm text-gray-500">+88 01781844900</a>
-
+                                        @foreach($data['contact_details']['phones'] as $phone_number)
+                                        <a href="tel:{{$phone_number}}" class="text-xs font-semibold md:text-sm text-gray-500">{{$phone_number}}</a>
+                                        @endforeach
                                     </div>
                                 </div>
                                 <!-- Phone Number -->
@@ -566,14 +525,17 @@
                                         <div class="w-10 h-10 bg-purple-400 rounded-full text-white
                                                         flex justify-center items-center shadow " href="#" title="Twitter Profile">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                                <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                                                @php
+                                                    echo($data['contact_details']['email_icon']);
+                                                @endphp
                                             </svg>
                                         </div>
                                     </div>
                                     <div class="flex flex-col space-y-1.5">
                                         <h3 class="text-sm font-bold ">Email</h3>
-                                        <a href="tel:+8801781844900"
-                                           class="text-xs font-semibold md:text-sm text-gray-500">azharasel@gmail.com</a>
+                                        @foreach($data['contact_details']['emails'] as $email)
+                                        <a href="mailto:{{$email}}" class="text-xs font-semibold md:text-sm text-gray-500">{{$email}}</a>
+                                        @endforeach
                                     </div>
                                 </div>
 

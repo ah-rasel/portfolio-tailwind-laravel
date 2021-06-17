@@ -35,6 +35,13 @@ return [
             'root' => storage_path('app'),
         ],
 
+        'portfolio' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/portfolio-photos'),
+            'url' => env('APP_URL').'/storage/portfolio-photos',
+            'visibility' => 'public',
+        ],
+
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
@@ -67,6 +74,7 @@ return [
 
     'links' => [
         public_path('storage') => storage_path('app/public'),
+        public_path('portfolio-photos') => storage_path('app/public/portfolio-photos'),
     ],
 
 ];

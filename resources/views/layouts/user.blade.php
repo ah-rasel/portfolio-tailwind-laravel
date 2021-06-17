@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <script src="{{ mix('js/app.js') }}" defer></script>
-
+    @livewireStyles
     <title>Md Rasel </title>
 </head>
 
@@ -43,7 +43,7 @@
                           aria-hidden="true"></span>
 
                     <a class="inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100"
-                       href="index.html">
+                       href="/">
                         <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
                              stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                             <path
@@ -156,7 +156,7 @@
                     <li class="hidden md:block text-sm font-semibold">
                         <div class="group cursor-pointer">
                             <div class="flex flex-col relative">
-                                <a href="#">
+                                <a href="/">
                                     Home
                                 </a>
                                 <span
@@ -168,7 +168,7 @@
                     <li class="hidden md:block text-sm font-semibold">
                         <div class="group">
                             <div class="flex flex-col relative">
-                                <a href="#">
+                                <a href="/#intro">
                                     My Intro
                                 </a>
                                 <span
@@ -245,14 +245,19 @@
                         </button>
 
                     </li>
-
+            @auth
                     <!-- Profile menu -->
                     <li class="relative">
                         <button class="align-middle rounded-full focus:shadow-outline-purple focus:outline-none"
                                 @click="toggleProfileMenu" @keydown.escape="closeProfileMenu" aria-label="Account"
                                 aria-haspopup="true">
-                            <img class="object-cover object-top w-8 h-8 rounded-full" src="images/rasel.jpg" alt=""
-                                 aria-hidden="true" />
+                            @if(Laravel\Jetstream\Jetstream::managesProfilePhotos())
+                                <img class="object-cover object-top w-8 h-8 rounded-full" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}"
+                                     aria-hidden="true" />
+                            @else
+                                <img class="object-cover object-top w-8 h-8 rounded-full" src="images/rasel.jpg" alt="{{ Auth::user()->name }}" aria-hidden="true" />
+
+                            @endif
                         </button>
                         <template x-if="isProfileMenuOpen">
                             <ul x-transition:leave="transition ease-in duration-150"
@@ -289,7 +294,10 @@
                                 </li>
                                 <li class="flex">
                                     <a class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
-                                       href="#">
+                                       href="#"
+                                       onclick="event.preventDefault();
+                         document.getElementById('logout-form').submit();"
+                                    >
                                         <svg class="w-4 h-4 mr-3" aria-hidden="true" fill="none"
                                              stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                              viewBox="0 0 24 24" stroke="currentColor">
@@ -297,22 +305,28 @@
                                                 d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1">
                                             </path>
                                         </svg>
+
                                         <span>Log out</span>
+
                                     </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
                                 </li>
                             </ul>
                         </template>
                     </li>
-{{--                <!-- @guest time -->--}}
-                    <!-- <li class="hidden md:block  text-sm font-semibold space-x-2">
-            <a href="#" class="text-gray-600">
-                Login
-            </a>
+            @else
+                    <li class="hidden md:block  text-sm font-semibold space-x-2">
+                        <a href="{{route('login')}}" class="text-gray-600">
+                        Login
+                        </a>
 
-            <a href="#" class="bg-purple-600 hover:bg-purple-500 shadow-sm text-white hover:text-gray-50 px-6 pt-1.5 pb-2 rounded-full">
-                SignUp
-            </a>
-        </li> -->
+                        <a href="{{route('register')}}" class="bg-purple-600 hover:bg-purple-500 shadow-sm text-white hover:text-gray-50 px-6 pt-1.5 pb-2 rounded-full">
+                        SignUp
+                        </a>
+                    </li>
+            @endauth
                 </ul>
             </div>
         </header>
@@ -363,6 +377,7 @@
         </main>
     </div>
 </div>
+@livewireScripts
 </body>
 
 </html>

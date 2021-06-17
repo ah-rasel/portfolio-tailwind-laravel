@@ -66,6 +66,9 @@ window.dataApp = () => {
                 this.isModalOpen = false
                 this.trapCleanup()
             },
+            imgModal : false,
+            imgModalSrc : '',
+            imgModalDesc : ''
         }
 
 }

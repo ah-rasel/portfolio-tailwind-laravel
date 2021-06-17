@@ -3907,7 +3907,10 @@ window.dataApp = function () {
     closeModal: function closeModal() {
       this.isModalOpen = false;
       this.trapCleanup();
-    }
+    },
+    imgModal: false,
+    imgModalSrc: '',
+    imgModalDesc: ''
   };
 };
 
