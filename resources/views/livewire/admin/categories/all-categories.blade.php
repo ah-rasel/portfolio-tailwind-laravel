@@ -19,7 +19,7 @@
             @endphp
             <tbody class="bg-gray-100 divide-y dark:divide-gray-700 dark:bg-gray-800">
             @foreach($categories as $category)
-            <tr class="text-center text-gray-700 dark:text-gray-400">
+            <tr class="text-gray-700  dark:text-gray-400">
                 <td class="px-4 py-3">
                     {{$loop->iteration+$skipped}}
                 </td>
@@ -30,7 +30,7 @@
                     {{$category->slug}}
                 </td>
                 <td class="px-4 py-3 text-sm">
-                    {{ \Illuminate\Support\Str::limit($category->description, 70, $end='...') }}
+                    @php echo(\Illuminate\Support\Str::limit($category->description, 40, $end='...')) @endphp
                 </td><td class="px-4 py-3 text-sm">
                 {{$category->date_to_display}}
                 </td>
