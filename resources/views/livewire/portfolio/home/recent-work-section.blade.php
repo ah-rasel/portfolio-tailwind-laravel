@@ -11,10 +11,10 @@
         @endforeach
     </div>
     <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mt-4">
-        <template @img-modal.window="imgModal = true; imgModalSrc = $event.detail.imgModalSrc; imgModalDesc = $event.detail.imgModalDesc;" x-if="imgModal">
-            <div x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform scale-90" x-transition:enter-end="opacity-100 transform scale-100" x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100 transform scale-100" x-transition:leave-end="opacity-0 transform scale-90" x-on:click.away="imgModalSrc = ''"
+        <template  @img-modal.window="imgModal = true; imgModalSrc = $event.detail.imgModalSrc; imgModalDesc = $event.detail.imgModalDesc;" x-if="imgModal">
+            <div x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform scale-90" x-transition:enter-end="opacity-100 transform scale-100" x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100 transform scale-100" x-transition:leave-end="opacity-0 transform scale-90" x-on:click.away="imgModal = !imgModal"
                  class="p-2 fixed w-full h-100 inset-0 z-50 overflow-hidden flex justify-center items-center bg-gray-400 bg-opacity-75">
-                <div @click.away="imgModal = ''" class="flex flex-col max-w-3xl max-h-full overflow-auto">
+                <div @click.away="imgModal = !imgModal" class="flex flex-col max-w-3xl max-h-full overflow-auto">
                     <div class="z-50">
                         <button @click="imgModal = ''" class="float-right pt-2 pr-2 outline-none focus:outline-none">
                             <svg class="fill-current text-white" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
@@ -42,7 +42,7 @@
                             <div class="flex h-48 md:h-80 justify-center items-center flex-col px-2 md:px-8 space-y-2">
                                 <div class="flex space-x-3.5">
                                     <a href="#"
-{{--                                       @click="$dispatch('img-modal', {  imgModalSrc: '{{asset('/storage/portfolio-photos/'.$work_item['image'])}}', imgModalDesc: 'Car rental' })"--}}
+{{--                                       @click="$dispatch('img-modal', {  imgModalSrc: '{{asset('/storage/portfolio-photos/'.$work_item['image'])}}', imgModalDesc: '{{$work_item['title']}}' })"--}}
                                        class="h-8 w-8 flex justify-center items-center bg-white">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />

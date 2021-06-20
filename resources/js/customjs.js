@@ -68,7 +68,7 @@ window.dataApp = () => {
             },
             imgModal : false,
             imgModalSrc : '',
-            imgModalDesc : ''
+            imgModalDesc : '',
         }
 
 }
