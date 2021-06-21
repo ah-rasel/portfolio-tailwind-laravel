@@ -22,7 +22,7 @@
                         {{$loop->iteration+$skipped}}
                     </td>
                     <td class="px-4 py-3">
-                        <a href="#" class="font-semibold underline">{{$post->title}}</a>
+                        <a href="{{ route('post.view', $post) }}" class="font-semibold underline">{{$post->title}}</a>
                     </td>
                     <td class="px-4 py-3 text-sm">
                         <a href="#" class="font-semibold text-blue-400">{{$post->category->name}}</a>
