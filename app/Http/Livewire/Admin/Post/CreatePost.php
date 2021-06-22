@@ -9,17 +9,16 @@ use Livewire\Component;
 
 class CreatePost extends Component
 {
-    public $title,$slug,$content,$category_id;
-    public $categories;
-    public function mount()
-    {
-        $this->categories = Category::all();
-    }
+    public $title,$slug,$content;
+    public $selected_category;
+    public $parent_id,$new_category_name;
+
     protected $rules = [
         'title' => 'required',
         'slug' => 'required|unique:posts,slug',
         'content' => 'required',
     ];
+
     public function updatedTitle()
     {
         $this->slug = Str::slug($this->title);
@@ -32,13 +31,27 @@ class CreatePost extends Component
             'title'=>$this->title,
             'slug'=>$this->slug,
             'content'=>$this->content,
-            'category_id'=>2,
+            'category_id'=>$this->selected_category,
             'user_id'=>auth()->user()->id,
         ]);
         return redirect()->route('post.edit',$post);
     }
+
+    public function AddNewCategory()
+    {
+        $this->parent_id = $this->parent_id ?? 0;
+        Category::create([
+            'name'=>$this->new_category_name,
+            'slug'=>Str::slug($this->new_category_name),
+            'parent_id'=>$this->parent_id,
+        ]);
+        $this->parent_id = $this->new_category_name = null;
+    }
+    
     public function render()
     {
-        return view('livewire.admin.post.create-post')->extends('layouts.admin');
+        return view('livewire.admin.post.create-post',[
+            'parentCategories'=>Category::where('parent_id',0)->get()
+        ])->extends('layouts.admin');
     }
 }

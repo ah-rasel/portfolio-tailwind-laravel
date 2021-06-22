@@ -13,9 +13,18 @@ class Category extends Model
         'name',
         'slug',
         'description',
+        'parent_id',
     ];
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
+    public function subcategory()
+    {
+        return $this->hasMany(Category::class,'parent_id');
+    }
     public function getDateToDisplayAttribute()
     {
-        return $this->created_at->format('M d, Y \a\t g:i A');
+        return $this->updated_at->format('M d, Y \a\t g:i A');
     }
 }

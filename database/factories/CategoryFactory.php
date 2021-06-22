@@ -26,6 +26,7 @@ class CategoryFactory extends Factory
             'name' => $var1 =$this->faker->lastName,
             'slug' => Str::slug($var1),
             'description' => $this->faker->text,
+            'parent_id' => rand(0,3),
         ];
     }
 }

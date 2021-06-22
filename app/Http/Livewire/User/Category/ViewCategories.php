@@ -12,7 +12,7 @@ class ViewCategories extends Component
     public function render()
     {
         return view('livewire.user.category.view-categories',[
-            'categories' => Category::paginate(10),
+            'categories' => Category::withCount('posts')->paginate(10),
         ])
         ->extends('user.base_for_blog')
         ->section('blogContent');

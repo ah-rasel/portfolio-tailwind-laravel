@@ -6,7 +6,8 @@
      <div class="flex space-x-4 text-gray-500 dark:text-gray-300 text-xs font-semibold">
 
       <div class="flex space-x-1.5 justify-center items-center">
-          <img class="h-7 w-7 rounded-full border-2 border-white dark:border-gray-50 shadow object-cover object-top" src="{{asset('images/rasel.jpg')}}" alt="Image of Md rasel">
+          <img class="h-7 w-7 rounded-full border-2 border-white dark:border-gray-50 shadow object-cover object-top" 
+          src="{{$post->user->profile_photo_url}}" alt="Image of Md rasel">
           <a href="#" class="hover:text-blue-400">{{$post->user->name}}</a>
       </div>    
       <div class="flex space-x-1.5 justify-center items-center">
@@ -29,7 +30,6 @@
             echo($post->content);
         @endphp
         </article>
-        
      </div>
     </div>
 

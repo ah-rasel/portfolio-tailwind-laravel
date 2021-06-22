@@ -19,7 +19,7 @@ class Post extends Model
 
     public function getDateToDisplayAttribute()
     {
-        return $this->created_at->format('M d, Y \a\t g:i A');
+        return $this->updated_at->format('M d, Y \a\t g:i A');
     }
 
     public function user()

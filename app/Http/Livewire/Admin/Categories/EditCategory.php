@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 class EditCategory extends Component
 {
     public $category;
+    public $parent_id;
     public function mount(Category $category)
     {
         $this->category = $category;
@@ -24,11 +25,18 @@ class EditCategory extends Component
     ];
     public function Update()
     {
+        // dd($this->parent_id);
         $this->validate();
+
+        if($this->parent_id){
+        $this->category->parent_id = ($this->parent_id == $this->category->id) ? 0 : ($this->parent_id ?? $this->category->parent_id);
+        }
         $this->category->update();
     }
     public function render()
     {
-        return view('livewire.admin.categories.edit-category')->extends('layouts.admin');
+        return view('livewire.admin.categories.edit-category',[
+            'parentCategories'=>Category::where('parent_id',0)->get()
+        ])->extends('layouts.admin');
     }
 }

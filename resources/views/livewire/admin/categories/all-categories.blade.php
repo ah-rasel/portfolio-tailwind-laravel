@@ -24,7 +24,7 @@
                     {{$loop->iteration+$skipped}}
                 </td>
                 <td class="px-4 py-3">
-                    <a href="#" class="font-semibold underline">{{$category->name}}</a>
+                    <a href="#" class="text-sm underline">{{$category->name}}</a>
                 </td>
                 <td class="px-4 py-3 text-sm">
                     {{$category->slug}}

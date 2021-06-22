@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Livewire\Admin\Categories\AddNewCategory;
@@ -15,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/',[HomeController::class,'viewHomePage'])->name('home');
-Route::get('/check',[DashboardController::class,'index'])->name('check');
+Route::get('/check',[BlogController::class,'index'])->name('check');
 
 // User Categories
 Route::get('/categories',ViewCategories::class);
@@ -52,16 +53,6 @@ Route::prefix('admin')->group(function (){
 });
 
 });
-// Route::resource('posts',\App\Http\Controllers\PostController::class)->only(['index','create']);
-// Route::resource('category',\App\Http\Controllers\CategoryController::class)->only(['index','create']);
-//For Posts
-
-
-
-
-Route::get('/blog',[\App\Http\Controllers\BlogController::class,'index']);
-
-
 
 
 

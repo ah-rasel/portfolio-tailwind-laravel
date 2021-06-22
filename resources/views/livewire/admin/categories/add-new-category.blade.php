@@ -2,6 +2,21 @@
     <form wire:submit.prevent="AddCategory()" action="" method="POST" class="mt-4">
         @csrf
         <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-lg dark:bg-gray-800">
+            <label class="block mt-4 text-sm">
+                <span class="text-gray-700 dark:text-gray-400 font-semibold">
+                  Select Parent Category
+                </span>
+                <select wire:model="parent_id" class="block w-full mt-1 text-sm dark:text-gray-300 rounded
+                 dark:border-gray-600 dark:bg-gray-700 
+                 form-select focus:border-purple-400 focus:outline-none 
+                 focus:shadow-outline-purple dark:focus:shadow-outline-gray">
+
+                  <option  value="null" >Select Parent Category</option>
+
+                  <x-blog.categories-tree-view :parent-categories="$parentCategories" calling-place="show-tree-edit-mode"></x-blog.categories-tree-view>
+
+                </select>
+            </label>
             <label class="block text-sm">
                 <span class="text-gray-700 dark:text-gray-400">Category Name</span>
                 <input wire:model="name" class="block w-full mt-1.5 border-none text-sm ring-1 ring-purple-300 py-1.5 px-1.5 rounded dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500 dark:text-gray-300" placeholder="How to boil water ?">
