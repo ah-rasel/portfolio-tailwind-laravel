@@ -9,7 +9,9 @@ use App\Http\Livewire\Admin\Categories\EditCategory;
 use App\Http\Livewire\Admin\Post\AllPosts;
 use App\Http\Livewire\Admin\Post\CreatePost;
 use App\Http\Livewire\Admin\Post\EditPost;
+use App\Http\Livewire\Portfolio\Cmd\CmdPage;
 use App\Http\Livewire\User\Category\ViewCategories;
+use App\Http\Livewire\User\Post\AllPosts as PostAllPosts;
 use App\Http\Livewire\User\Post\PostsUnderCategory;
 use App\Http\Livewire\User\Post\SinglePost;
 use Illuminate\Support\Facades\Route;
@@ -18,12 +20,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',[HomeController::class,'viewHomePage'])->name('home');
 Route::get('/check',[BlogController::class,'index'])->name('check');
 
+// CMD
+Route::get('/cmd',CmdPage::class);
+
 // User Categories
 Route::get('/categories',ViewCategories::class);
 
 // Posts
 Route::get('/posts/{category:slug}',PostsUnderCategory::class)->name('posts.of.category');
 Route::get('/post/{post:slug}',SinglePost::class)->name('post.view');
+Route::get('/blog',PostAllPosts::class)->name('posts.show');
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::view('/dashboard','dashboard')->name('dashboard');
@@ -38,19 +44,19 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::view('/contact','portfolio.portfolio_contact')->name('portfolio.contact');
     });
     
-Route::prefix('admin')->group(function (){
+    Route::prefix('admin')->group(function (){
 
-//  Admin  Posts
-    Route::get('/posts',AllPosts::class)->name('admin.posts.index');
-    Route::get('/post/create',CreatePost::class)->name('post.create');
-    Route::get('/post/{post}/edit',EditPost::class)->name('post.edit');
+    //  Admin  Posts
+        Route::get('/posts',AllPosts::class)->name('admin.posts.index');
+        Route::get('/post/create',CreatePost::class)->name('post.create');
+        Route::get('/post/{post}/edit',EditPost::class)->name('post.edit');
 
-// Admin Categories
+    // Admin Categories
 
-    Route::get('/categories',AllCategories::class)->name('admin.category.index');
-    Route::get('/category/create',AddNewCategory::class)->name('category.create');
-    Route::get('/category/{category}/edit',EditCategory::class)->name('category.edit');
-});
+        Route::get('/categories',AllCategories::class)->name('admin.category.index');
+        Route::get('/category/create',AddNewCategory::class)->name('category.create');
+        Route::get('/category/{category}/edit',EditCategory::class)->name('category.edit');
+    });
 
 });
 

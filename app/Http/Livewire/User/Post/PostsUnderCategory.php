@@ -18,7 +18,7 @@ class PostsUnderCategory extends Component
     public function render()
     {
         return view('livewire.user.post.posts-under-category',[
-            'posts'=> Post::where('category_id',$this->category->id)->paginate(15),
+            'posts'=> Post::where('category_id',$this->category->id)->paginate(10),
         ])
         ->extends('user.base_for_blog')
         ->section('blogContent');

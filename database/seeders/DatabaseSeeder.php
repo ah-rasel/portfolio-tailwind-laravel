@@ -4,7 +4,9 @@ namespace Database\Seeders;
 
 use App\Models\Action;
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Post;
+use App\Models\Reply;
 use App\Models\User;
 use Database\Factories\CategoryFactory;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -26,8 +28,10 @@ class DatabaseSeeder extends Seeder
 
          User::factory(15)->create();
          Action::factory(1)->create();
-        //  Category::factory(10)->create();
-        //  Post::factory(100)->create();
+         Category::factory(10)->create();
+         Post::factory(100)->create();
+         Comment::factory(10)->create();
+         Reply::factory(10)->create();
         $categories = [
                 [
                     'name' => $var1 ="One",
@@ -86,6 +90,6 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 3,
                 ],
         ];
-        Category::insert($categories);
+        // Category::insert($categories);
     }
 }

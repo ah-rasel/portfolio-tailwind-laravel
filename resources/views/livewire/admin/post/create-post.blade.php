@@ -2,7 +2,7 @@
     <form wire:submit.prevent="AddPost()" action="" method="POST">
         @csrf
         <div class="grid grid-cols-8 gap-3">
-            <div class="col-span-6 px-4 py-3 bg-white rounded-lg shadow-lg dark:bg-gray-800">
+                <div class="col-span-6 px-4 py-3 bg-white rounded-lg shadow-lg dark:bg-gray-800">
                 <label class="block text-sm">
                     <span class="text-gray-700 dark:text-gray-400 font-bold">Post Title</span>
                     <input wire:model="title" class="block w-full mt-1.5 border-none text-sm ring-1 ring-purple-300 py-1.5 px-1.5 rounded dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500 dark:text-gray-300" placeholder="How to boil water ?">

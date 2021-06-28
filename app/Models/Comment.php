@@ -5,21 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model
+class Comment extends Model
 {
     use HasFactory;
-
     protected $fillable=[
-        'title',
-        'slug',
-        'content',
-        'category_id',
+        'comment',
+        'post_id',
         'user_id',
     ];
-
+    
     public function getDateToDisplayAttribute()
     {
-        return $this->updated_at->format('M d, Y \a\t g:i A');
+        return $this->created_at->format('M d \a\t g:i A');
     }
 
     public function user()
@@ -27,12 +24,8 @@ class Post extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function category()
+    public function replies()
     {
-        return $this->belongsTo(Category::class);
-    }
-    public function comments()
-    {
-        return $this->hasMany(Comment::class);
+        return $this->hasMany(Reply::class);
     }
 }

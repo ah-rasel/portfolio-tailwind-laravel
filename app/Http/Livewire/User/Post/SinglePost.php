@@ -10,7 +10,7 @@ class SinglePost extends Component
     public $post;
     public function mount(Post $post)
     {
-        $post->load('user','category');
+        $post->load('user:id,name','category','comments.user:id,name','comments.replies.user:id,name');
         $this->post = $post;
     }
     public function render()
