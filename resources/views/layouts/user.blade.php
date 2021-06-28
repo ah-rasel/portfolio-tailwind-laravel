@@ -370,11 +370,11 @@
                 </div>
             </div>
             @yield('content')
-            <footer class="bg-gray-200 h-10 w-full">
-                <div class="flex space-x-3">
-                    <p>Made With Love By </p><a href="#">Md Rasel</a>
+            {{-- <footer class="bg-gray-200 w-full mt-[200px]">
+                <div class="flex h-10 justify-center items-center text-sm">
+                    <span class="text-gray-600 text-xs font-semibold">By </span><a class="ml-2 font-bold" href="#">Md Rasel</a>
                 </div>
-            </footer>
+            </footer> --}}
         </main>
     </div>
 </div>

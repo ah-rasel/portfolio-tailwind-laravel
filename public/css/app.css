@@ -1395,6 +1395,9 @@ select{
 .-ml-1{
 	margin-left: -0.25rem;
 }
+.mt-\[200px\]{
+	margin-top: 200px;
+}
 .-mt-px{
 	margin-top: -1px;
 }
@@ -3053,6 +3056,10 @@ select{
 .dark .dark\:border-gray-800{
 	--tw-border-opacity: 1;
 	border-color: rgba(31, 41, 55, var(--tw-border-opacity));
+}
+.dark .dark\:border-gray-200{
+	--tw-border-opacity: 1;
+	border-color: rgba(229, 231, 235, var(--tw-border-opacity));
 }
 .dark .dark\:bg-white{
 	--tw-bg-opacity: 1;
