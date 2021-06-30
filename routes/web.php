@@ -9,6 +9,7 @@ use App\Http\Livewire\Admin\Categories\EditCategory;
 use App\Http\Livewire\Admin\Post\AllPosts;
 use App\Http\Livewire\Admin\Post\CreatePost;
 use App\Http\Livewire\Admin\Post\EditPost;
+use App\Http\Livewire\Portfolio\AllMessages;
 use App\Http\Livewire\Portfolio\Cmd\CmdPage;
 use App\Http\Livewire\User\Category\ViewCategories;
 use App\Http\Livewire\User\Post\AllPosts as PostAllPosts;
@@ -45,6 +46,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     });
     
     Route::prefix('admin')->group(function (){
+        Route::get('/messages',AllMessages::class)->name('portfolio.messages');
 
     //  Admin  Posts
         Route::get('/posts',AllPosts::class)->name('admin.posts.index');

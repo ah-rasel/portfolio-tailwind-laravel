@@ -469,34 +469,7 @@
 
                 <div class="mb-32">
                     <div class="block md:grid md:grid-cols-4">
-                        <div class="md:col-span-3 h-40 w-full">
-                            <form action="" class="space-y-3">
-                                <div class="md:flex space-y-2 md:space-y-0">
-                                    <div class="flex flex-col text-sm md:px-2 w-full space-y-2">
-                                        <label for="" class="px-1 text-sm font-semibold">Name</label>
-                                        <input type="text" placeholder="Christopher Nolan"
-                                               class="bg-transparent ring-1 ring-gray-200 dark:ring-gray-500
-                                                    focus:ring-indigo-600 focus:outline-none rounded-md px-2 w-full py-1.5">
-                                    </div>
-                                    <div class="flex flex-col text-sm md:px-2 w-full space-y-2">
-                                        <label for="" class="px-1 text-sm font-semibold">Email</label>
-                                        <input type="email" placeholder="Yourmail@mail.com"
-                                               class="bg-transparent ring-1 ring-gray-200 dark:ring-gray-500
-                                                    focus:ring-indigo-600 focus:outline-none rounded-md px-2 w-full py-1.5">
-                                    </div>
-
-                                </div>
-                                <div class="md:px-2 space-y-2">
-                                    <label for="" class="px-1 text-sm font-semibold">Message</label>
-                                    <textarea name="" id="" cols="30" rows="4"
-                                              class="bg-transparent ring-1 ring-gray-200 dark:ring-gray-500
-                                                focus:ring-indigo-600 focus:outline-none rounded-md px-2 w-full py-1.5" placeholder="asdasd"></textarea>
-                                </div>
-                                <div class="md:px-2 ">
-                                    <button type="submit" class="float-right text-sm bg-purple-600 hover:bg-purple-700 dark:hover:bg-purple-700 px-2 py-1 rounded text-white dark:text-gray-200">Send Message</button>
-                                </div>
-                            </form>
-                        </div>
+                        @livewire('contact-with-me')
                         <div class="md:h-40 w-full mt-48 md:mt-0 md:p-8">
                             <div class="flex md:block justify-between md:space-y-4 md:px-0">
 

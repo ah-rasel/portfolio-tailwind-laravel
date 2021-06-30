@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Action;
 use App\Models\Category;
 use App\Models\Comment;
+use App\Models\Message;
 use App\Models\Post;
 use App\Models\Reply;
 use App\Models\User;
@@ -32,6 +33,7 @@ class DatabaseSeeder extends Seeder
          Post::factory(100)->create();
          Comment::factory(10)->create();
          Reply::factory(10)->create();
+         Message::factory(50)->create();
         $categories = [
                 [
                     'name' => $var1 ="One",
