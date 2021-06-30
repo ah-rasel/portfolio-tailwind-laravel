@@ -30,6 +30,7 @@ class ContactWithMe extends Component
             'email'=>$this->email,
             'message'=>$this->message,
         ]);
+        $this->emitSelf('message-sent');
         $this->name = $this->email = $this->message = '' ;
     }
     public function render()

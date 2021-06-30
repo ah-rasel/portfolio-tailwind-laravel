@@ -1,7 +1,7 @@
 <div class="">
     <div class="grid md:grid-cols-10 mt-5 mb-2 min-h-[570px]">
         <div class="hidden md:block col-span-3 h-full w-full pr-3">
-            <div class="flex flex-col w-full flex-grow border-l border-r border-gray-100 dark:border-gray-800 bg-gray-100 dark:bg-gray-800">
+            <div class="flex flex-col w-full flex-grow border-l border-r border-gray-100 dark:border-gray-800 bg-gray-300 dark:bg-gray-800">
                 <div class="flex-shrink-0 px-4 py-2 border-b text-gray-600 dark:text-gray-300 border-gray-100 dark:border-gray-800 flex items-center justify-between">
                   <div class="text-xs font-semibold">
                       Messages
@@ -21,7 +21,7 @@
                 @foreach ($messages as $message)
                    @if ($message->read_status)
                     <div class="group cursor-pointer">
-                        <div class="block px-6 pt-2.5 pb-3.5 dark:bg-gray-800 border-t border-t-gray-200 @if($messageToOpen && $messageToOpen->id == $message->id)border-l-4 border-l-blue-400 bg-white dark:bg-gray-900 @else bg-gray-100 @endif dark:border-gray-500 group-hover:bg-gray-200 dark:group-hover:bg-gray-900">
+                        <div class="block px-6 pt-2.5 pb-3.5 dark:bg-gray-800 border-t border-t-gray-200 @if($messageToOpen && $messageToOpen->id == $message->id)border-l-4 border-l-blue-400 bg-white dark:bg-gray-900 @else bg-gray-100 @endif dark:border-t-gray-600 group-hover:bg-gray-200 dark:group-hover:bg-gray-900">
                             <div class="flex justify-between">
                                 <span wire:click="MessageToShow({{$message->id}})" class="text-sm font-semibold text-gray-900 dark:text-gray-200">{{$message->name}}</span>
                                 <div class="flex space-x-2 text-sm text-gray-400 dark:text-gray-500">
@@ -43,7 +43,7 @@
                     </div>
                    @else
                     <div class="group cursor-pointer">
-                        <div class="block px-6 pt-2.5 pb-3.5 bg-gray-200 dark:bg-gray-700 group-hover:bg-gray-300 dark:group-hover:bg-gray-900">
+                        <div class="block px-6 pt-2.5 pb-3.5 bg-gray-200 border-t border-t-gray-100 dark:border-t-gray-600 dark:bg-gray-700 group-hover:bg-gray-300 dark:group-hover:bg-gray-900">
                             <div class="flex justify-between">
                             <span wire:click="MessageToShow({{$message->id}})" class="text-sm font-semibold text-gray-900 dark:text-gray-200">{{$message->name}}</span>
                             <div class="flex space-x-2 text-sm text-gray-400 dark:text-gray-500">
@@ -59,7 +59,7 @@
                                 </span>
                             </div>
                             </div>
-                            <p wire:click="MessageToShow({{$message->id}})" class="text-sm text-gray-600 dark:text-gray-400">{{\Illuminate\Support\Str::limit($message->message, 20, $end='...')}}</p>
+                            <p wire:click="MessageToShow({{$message->id}})" class="text-sm text-gray-600 dark:text-gray-400">{{\Illuminate\Support\Str::limit($message->message, 40, $end='...')}}</p>
                             <span wire:click="MessageToShow({{$message->id}})" class="text-xs text-gray-400 font-semibold">{{$message->date_to_display}}</span>
                         </div>
                     </div>

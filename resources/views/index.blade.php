@@ -470,7 +470,7 @@
                 <div class="mb-32">
                     <div class="block md:grid md:grid-cols-4">
                         @livewire('contact-with-me')
-                        <div class="md:h-40 w-full mt-48 md:mt-0 md:p-8">
+                        <div class="md:h-40 w-full mt-64 md:mt-0 md:p-8">
                             <div class="flex md:block justify-between md:space-y-4 md:px-0">
 
                                 <!-- Phone Number -->
