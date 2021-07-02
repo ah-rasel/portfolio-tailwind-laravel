@@ -3,13 +3,19 @@
 namespace App\Http\Livewire\Portfolio;
 
 use App\Models\Action;
+use Illuminate\Support\Facades\Gate;
 use Livewire\Component;
 
 class OfferSection extends Component
 {
     public $edit_offer,$edit_individual_offer,$add_offer,$new_offer_title,$new_offer_text,$new_offer_icon,$current_key;
     public $data,$data1;
-
+    public function mount()
+    {
+        if(Gate::denies('portfolio_access')){
+            redirect()->route('dashboard');
+        }
+    }
     protected $rules = [
         'data.greeting' => 'required|string',
         'data.display_name' => 'required|string',

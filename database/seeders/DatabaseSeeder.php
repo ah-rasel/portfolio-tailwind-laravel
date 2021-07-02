@@ -31,12 +31,12 @@ class DatabaseSeeder extends Seeder
             RoleUserTableSeeder::class, 
         ]);
 
-        //  User::factory(15)->create();
+         User::factory(15)->create();
          Action::factory(1)->create();
-        //  Category::factory(10)->create();
-        //  Post::factory(100)->create();
-        //  Comment::factory(10)->create();
-        //  Reply::factory(10)->create();
+         Category::factory(10)->create();
+         Post::factory(100)->create();
+         Comment::factory(10)->create();
+         Reply::factory(10)->create();
          Message::factory(50)->create();
         $categories = [
                 [

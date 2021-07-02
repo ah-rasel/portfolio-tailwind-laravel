@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Role;
 use App\Models\User;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 
@@ -19,6 +20,12 @@ class AddUser extends Component
         'email'=>'required|email',
         'password'=>'required',
     ];
+    public function mount()
+    {
+        if(Gate::denies('user_create')){
+            redirect()->route('dashboard');
+        }
+    }
     public function Add()
     {
         $this->validate();

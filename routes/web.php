@@ -41,7 +41,7 @@ Route::get('/post/{post:slug}',SinglePost::class)->name('post.view');
 Route::get('/blog',PostAllPosts::class)->name('posts.show');
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
-    Route::view('/dashboard','dashboard')->name('dashboard');
+    Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');
     Route::prefix('portfolio')->group(function () {
         Route::view('/','portfolio.portfolio_header')->name('portfolio');
         Route::view('/floating','portfolio.portfolio_floating')->name('portfolio.floating');

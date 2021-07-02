@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Permission;
 use Exception;
+use Illuminate\Support\Facades\Gate;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -13,20 +14,35 @@ class Permissions extends Component
 
     public $selected= [];
     public $deleted_record;
-
+    public function mount()
+    {
+        if(Gate::denies('permission_read')){
+            redirect()->route('dashboard');
+        }
+    }
     public function Delete($id)
     {
-        $permission = Permission::find($id);
-        $this->deleted_record = $permission->title;
-        $permission->delete();
-        $this->emitSelf('record_deleted');
+        if(Gate::denies('permission_delete')){
+            redirect()->route('dashboard');
+        }else{
+            $permission = Permission::find($id);
+            $this->deleted_record = $permission->title;
+            $permission->delete();
+            $this->emitSelf('record_deleted');
+        }
+
     }
     public function DeleteSelected()
     {
-        Permission::destroy($this->selected);
-        $this->deleted_record = "Selected Permissions";
-        $this->emitSelf('record_deleted');
-        $this->selected = [];
+        if(Gate::denies('permission_delete')){
+            redirect()->route('dashboard');
+        }else{
+            Permission::destroy($this->selected);
+            $this->deleted_record = "Selected Permissions";
+            $this->emitSelf('record_deleted');
+            $this->selected = [];
+        }
+
     }
     public function render()
     {

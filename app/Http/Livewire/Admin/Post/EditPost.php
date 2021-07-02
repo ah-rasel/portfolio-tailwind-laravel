@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Admin\Post;
 
 use App\Models\Category;
 use App\Models\Post;
+use Illuminate\Support\Facades\Gate;
 use Livewire\Component;
 use Illuminate\Support\Str;
 
@@ -16,7 +17,11 @@ class EditPost extends Component
     
     public function mount(Post $post)
     {
+        if(Gate::denies('post_update')){
+            redirect()->route('dashboard');
+        }else{
         $this->post = $post;
+        }
     }
 
     public function updatedPostTitle()
@@ -31,19 +36,27 @@ class EditPost extends Component
     ];
     public function Update()
     {
+        if(Gate::denies('post_update')){
+            redirect()->route('dashboard');
+        }else{
         $this->validate();
         $this->post->category_id = $this->selected_category ?? $this->post->category_id;
         $this->post->update();
+        }
     }
     public function AddNewCategory()
     {
-        $this->parent_id = $this->parent_id ?? 0;
-        Category::create([
-            'name'=>$this->new_category_name,
-            'slug'=>Str::slug($this->new_category_name),
-            'parent_id'=>$this->parent_id,
-        ]);
-        $this->parent_id = $this->new_category_name = null;
+        if(Gate::denies('category_create')){
+            redirect()->route('dashboard');
+        }else{
+            $this->parent_id = $this->parent_id ?? 0;
+            Category::create([
+                'name'=>$this->new_category_name,
+                'slug'=>Str::slug($this->new_category_name),
+                'parent_id'=>$this->parent_id,
+            ]);
+            $this->parent_id = $this->new_category_name = null;
+        }
     }
     public function render()
     {

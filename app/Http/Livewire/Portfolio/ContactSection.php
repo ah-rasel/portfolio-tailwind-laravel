@@ -3,12 +3,19 @@
 namespace App\Http\Livewire\Portfolio;
 
 use App\Models\Action;
+use Illuminate\Support\Facades\Gate;
 use Livewire\Component;
 
 class ContactSection extends Component
 {
     public $data,$data1;
     public $contact_slug,$contact_title,$add_phone,$add_email,$new_phone_number,$current_key,$edit_individual_phone,$edit_individual_email;
+    public function mount()
+    {
+        if(Gate::denies('portfolio_access')){
+            redirect()->route('dashboard');
+        }
+    }
     public function getData()
     {
         $this->data1 = Action::Where('action_name','portfolio')->first();

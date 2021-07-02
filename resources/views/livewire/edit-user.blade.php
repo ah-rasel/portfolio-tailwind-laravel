@@ -1,5 +1,6 @@
 <div class="mt-5">
-    @json($selected)
+   @can('user_edit')
+
     <form wire:submit.prevent="Update()" action="" method="POST">
          <x-input.label title="Name">
             <x-input.text wire:model.defer="user.name"/>
@@ -18,4 +19,6 @@
          @endforeach
          <x-form.submit title="Update User Details" />
     </form>
+          
+   @endcan
  </div>

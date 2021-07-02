@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Portfolio;
 
 use App\Models\Action;
+use Illuminate\Support\Facades\Gate;
 use Livewire\Component;
 
 class ExpertiseArea extends Component
@@ -11,7 +12,12 @@ class ExpertiseArea extends Component
     public $edit_individual_expertise_left,$edit_individual_expertise_right;
     public $new_expertise_title='', $new_expertise_value='';
     public $data,$data1;
-
+    public function mount()
+    {
+        if(Gate::denies('portfolio_access')){
+            redirect()->route('dashboard');
+        }
+    }
     public function getData()
     {
         $this->data1 = Action::Where('action_name','portfolio')->first();

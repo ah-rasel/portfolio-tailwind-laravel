@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Portfolio;
 
 use App\Models\Action;
 use http\Exception;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -17,7 +18,12 @@ class RecentWorks extends Component
     public $workImage;
     public $work_slug,$work_title,$add_new_work_sample,$new_group,$new_workImage,$previous_workImage;
     public $new_work_slug,$new_work_title,$edit_individual_work,$add_work_categories,$new_work_category='',$edit_individual_work_group,$edit_work_category;
-
+    public function mount()
+    {
+        if(Gate::denies('portfolio_access')){
+            redirect()->route('dashboard');
+        }
+    }
     protected $rules = [
         'data.recent_work_slug' => 'required|string',
         'data.recent_work_title' => 'required|string',

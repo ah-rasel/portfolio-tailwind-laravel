@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-
+@can('dashboard_access')
     <!-- Cards -->
     <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4 mt-5">
         <!-- Card Mobiles -->
@@ -134,6 +134,6 @@
                 </ul>
             </div>
         </div>
-
     </div>
+@endcan
 @endsection

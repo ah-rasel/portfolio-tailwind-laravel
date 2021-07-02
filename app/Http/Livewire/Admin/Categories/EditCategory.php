@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Admin\Categories;
 
 use App\Models\Category;
+use Illuminate\Support\Facades\Gate;
 use Livewire\Component;
 use Illuminate\Support\Str;
 
@@ -12,7 +13,11 @@ class EditCategory extends Component
     public $parent_id;
     public function mount(Category $category)
     {
-        $this->category = $category;
+        if(Gate::denies('category_update')){
+            redirect()->route('dashboard');
+        }else{
+            $this->category = $category;
+        }
     }
     public function updatedCategoryName()
     {
@@ -25,13 +30,15 @@ class EditCategory extends Component
     ];
     public function Update()
     {
-        // dd($this->parent_id);
-        $this->validate();
-
-        if($this->parent_id){
-        $this->category->parent_id = ($this->parent_id == $this->category->id) ? 0 : ($this->parent_id ?? $this->category->parent_id);
-        }
-        $this->category->update();
+        if(Gate::denies('category_update')){
+            redirect()->route('dashboard');
+        }else{
+            $this->validate();
+            if($this->parent_id){
+            $this->category->parent_id = ($this->parent_id == $this->category->id) ? 0 : ($this->parent_id ?? $this->category->parent_id);
+            }
+            $this->category->update();
+         }
     }
     public function render()
     {

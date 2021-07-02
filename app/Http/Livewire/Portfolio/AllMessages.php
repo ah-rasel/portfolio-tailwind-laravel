@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Portfolio;
 
 use App\Models\Message;
+use Illuminate\Support\Facades\Gate;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -15,7 +16,13 @@ class AllMessages extends Component
     public $orderBy = 'created_at';
     public $SortBy = 'DESC';
     public $deleted_message = '';
-    
+
+    public function mount()
+    {
+        if(Gate::denies('inbox_access')){
+            redirect()->route('dashboard');
+        }
+    }
     public function MessageToShow($id)
     {
         try {
@@ -30,16 +37,20 @@ class AllMessages extends Component
     }
     public function DeleteMessage($id)
     {
-        try {
-            $message = Message::find($id);
-            if($this->individualMessageOpen && $this->messageToOpen && $message->id == $this->messageToOpen->id){
-                $this->individualMessageOpen = false;
-                $this->messageToOpen = '';
+        if(Gate::denies('message_delete')){
+            redirect()->route('dashboard');
+        }else{
+            try {
+                $message = Message::find($id);
+                if($this->individualMessageOpen && $this->messageToOpen && $message->id == $this->messageToOpen->id){
+                    $this->individualMessageOpen = false;
+                    $this->messageToOpen = '';
+                }
+                $this->deleted_message = "Messasge from ".$message->name;
+                $message->delete();
+                $this->emitSelf('message_deleted');
+            } catch (\Exception $exception) { 
             }
-            $this->deleted_message = "Messasge from ".$message->name;
-            $message->delete();
-            $this->emitSelf('message_deleted');
-        } catch (\Exception $exception) { 
         }
     }
     public function ChangeMark($id)

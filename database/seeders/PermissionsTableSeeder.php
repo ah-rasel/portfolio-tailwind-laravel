@@ -17,7 +17,7 @@ class PermissionsTableSeeder extends Seeder
         $permissions = [
             [
                 'id'    => 1,
-                'title' => 'user_management_access',
+                'title' => 'dashboard_access',
             ],
             [
                 'id'    => 2,
@@ -150,6 +150,10 @@ class PermissionsTableSeeder extends Seeder
             [
                 'id'    => 34,
                 'title' => 'portfolio_delete',
+            ],
+            [
+                'id'    => 35,
+                'title' => 'user_management_access',
             ],
         ];
 

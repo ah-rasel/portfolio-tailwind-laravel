@@ -1,18 +1,22 @@
 <div class="flex flex-col mt-5">
+  @can('user_access')
   <x-table.action_performed event-name="record_deleted" :details="$deleted_record"></x-table.action_performed>
   <div class="space-x-1 mb-3">
+    @can('user_create')
     <a href="{{route('admin.users.create')}}" class="text-xs text-gray-200 font-semibold bg-purple-600 px-4 py-1.5 shadow rounded-sm">Add New User<a>
-    @if ($selected)
-      <a wire:click.prevent='DeleteSelected()' href="#" class="text-xs text-gray-200 font-semibold bg-red-600 px-4 py-1.5 shadow rounded-sm">Delete Selected<a>
-    @endif
+    @endcan
+    @can('user_delete')
+      @if ($selected)
+        <a wire:click.prevent='DeleteSelected()' href="#" class="text-xs text-gray-200 font-semibold bg-red-600 px-4 py-1.5 shadow rounded-sm">Delete Selected<a>
+      @endif
+    @endcan
   </div>
-  @json($selected)
     <div class="overflow-x-auto sm:-mx-6 lg:-mx-8 min-h-[570px]">
       <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
         <x-table>
           <x-slot name="head">
             <x-table.heading class="w-3">
-              <x-input.checkbox/>
+              @can('user_delete')  <x-input.checkbox/> @endcan
             </x-table.heading>
 
             <x-table.heading>Name</x-table.heading>
@@ -25,7 +29,7 @@
           @foreach ($users as $user)
             <x-table.row>
                 <x-table.cell class="w-3">
-                  <x-input.checkbox wire:model='selected' value="{{$user->id}}"/>
+                  @can('user_delete')  <x-input.checkbox wire:model='selected' value="{{$user->id}}"/> @endcan
                 </x-table.cell>
 
                 <x-table.cell>
@@ -56,8 +60,8 @@
 
                 <x-table.cell> 
                   <div class="flex space-x-4">
-                    <x-table.button.action href="{{route('admin.users.edit',$user->id)}}" edit/>
-                    <x-table.button.action wire:click="Delete({{$user->id}})" delete/>
+                    @can('user_edit') <x-table.button.action href="{{route('admin.users.edit',$user->id)}}" edit/> @endcan
+                    @can('user_delete') <x-table.button.action wire:click="Delete({{$user->id}})" delete/> @endcan
                   </div>
                 </x-table.cell>
             
@@ -68,4 +72,5 @@
       </div>
     </div>
     {{ $users->links('livewire.admin.admin-pagination') }}
+    @endcan
   </div>

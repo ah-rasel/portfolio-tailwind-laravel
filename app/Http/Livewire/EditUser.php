@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Role;
 use App\Models\User;
+use Illuminate\Support\Facades\Gate;
 use Livewire\Component;
 
 class EditUser extends Component
@@ -17,8 +18,13 @@ class EditUser extends Component
     ];
     public function mount($user)
     {
-        $this->user = User::with('roles')->find($user);
+        if(Gate::denies('user_edit')){
+            redirect()->route('dashboard');
+        }else{
+            $this->user = User::with('roles')->find($user);
         $this->selected = $this->user->roles->pluck('id')->map(fn($id)=> (string) $id);
+        }
+        
     }
     public function Update()
     {

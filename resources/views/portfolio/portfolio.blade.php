@@ -1,5 +1,6 @@
 @extends('layouts.admin')
 @section('content')
+@can('portfolio_access')
     <div class="grid md:grid-cols-5 mt-5 shadow bg-white dark:bg-gray-800 ">
         <div class="hidden md:block col-span-1 h-full w-full py-4">
             <ul class="">
@@ -67,4 +68,5 @@
         </div>
         @yield('portfolioContent')
     </div>
+@endcan
 @endsection

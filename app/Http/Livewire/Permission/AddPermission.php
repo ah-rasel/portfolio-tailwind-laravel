@@ -3,11 +3,18 @@
 namespace App\Http\Livewire\Permission;
 
 use App\Models\Permission;
+use Illuminate\Support\Facades\Gate;
 use Livewire\Component;
 
 class AddPermission extends Component
 {
     public $title;
+    public function mount()
+    {
+        if(Gate::denies('permission_create')){
+            redirect()->route('dashboard');
+        }
+    }
     protected $rules=[
         'title'=>'required',
     ];

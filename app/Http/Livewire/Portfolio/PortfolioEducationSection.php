@@ -3,13 +3,19 @@
 namespace App\Http\Livewire\Portfolio;
 
 use App\Models\Action;
+use Illuminate\Support\Facades\Gate;
 use Livewire\Component;
 
 class PortfolioEducationSection extends Component
 {
     public $edit_journey,$add_education,$add_experience,$edu_degree,$edu_dept,$edu_year;
     public $data,$data1;
-
+    public function mount()
+    {
+        if(Gate::denies('portfolio_access')){
+            redirect()->route('dashboard');
+        }
+    }
     protected $rules = [
         'data.greeting' => 'required|string',
         'data.display_name' => 'required|string',
