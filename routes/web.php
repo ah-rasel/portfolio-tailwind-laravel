@@ -3,18 +3,26 @@
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
+use App\Http\Livewire\AddUser;
 use App\Http\Livewire\Admin\Categories\AddNewCategory;
 use App\Http\Livewire\Admin\Categories\AllCategories;
 use App\Http\Livewire\Admin\Categories\EditCategory;
 use App\Http\Livewire\Admin\Post\AllPosts;
 use App\Http\Livewire\Admin\Post\CreatePost;
 use App\Http\Livewire\Admin\Post\EditPost;
+use App\Http\Livewire\EditUser;
+use App\Http\Livewire\Permission\AddPermission;
+use App\Http\Livewire\Permission\AddRoles;
+use App\Http\Livewire\Permission\EditRole;
+use App\Http\Livewire\Permissions;
 use App\Http\Livewire\Portfolio\AllMessages;
 use App\Http\Livewire\Portfolio\Cmd\CmdPage;
+use App\Http\Livewire\Roles;
 use App\Http\Livewire\User\Category\ViewCategories;
 use App\Http\Livewire\User\Post\AllPosts as PostAllPosts;
 use App\Http\Livewire\User\Post\PostsUnderCategory;
 use App\Http\Livewire\User\Post\SinglePost;
+use App\Http\Livewire\Users;
 use Illuminate\Support\Facades\Route;
 
 
@@ -47,7 +55,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     
     Route::prefix('admin')->group(function (){
         Route::get('/messages',AllMessages::class)->name('portfolio.messages');
-
     //  Admin  Posts
         Route::get('/posts',AllPosts::class)->name('admin.posts.index');
         Route::get('/post/create',CreatePost::class)->name('post.create');
@@ -59,6 +66,15 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::get('/category/create',AddNewCategory::class)->name('category.create');
         Route::get('/category/{category}/edit',EditCategory::class)->name('category.edit');
     });
+    Route::get('/users',Users::class)->name('admin.users.index');
+    Route::get('/user/create',AddUser::class)->name('admin.users.create');
+    Route::get('/user/{user}/edit',EditUser::class)->name('admin.users.edit');
+    Route::get('/role/create',AddRoles::class)->name('admin.roles.create');
+    Route::get('/roles',Roles::class)->name('admin.roles.index');
+    Route::get('/role/{role}/edit',EditRole::class)->name('admin.roles.edit');
+    
+    Route::get('/permissions',Permissions::class)->name('admin.permissions.index');
+    Route::get('/permission/create',AddPermission::class)->name('admin.permissions.create');
 
 });
 

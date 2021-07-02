@@ -1,4 +1,5 @@
 <div class="">
+    <x-table.action_performed event-name="message_deleted" :details="$deleted_message"></x-table.action_performed>
     <div class="grid md:grid-cols-10 mt-5 mb-2 min-h-[570px]">
         <div class="hidden md:block col-span-3 h-full w-full pr-3">
             <div class="flex flex-col w-full flex-grow border-l border-r border-gray-100 dark:border-gray-800 bg-gray-300 dark:bg-gray-800">
@@ -37,8 +38,10 @@
                                     </span>
                                 </div>
                             </div>
-                            <p wire:click="MessageToShow({{$message->id}})" class="text-sm text-gray-600 dark:text-gray-400">{{\Illuminate\Support\Str::limit($message->message, 40, $end='...')}}</p>
-                            <span wire:click="MessageToShow({{$message->id}})" class="text-xs text-gray-400 font-semibold">{{$message->date_to_display}}</span>
+                            <div wire:click="MessageToShow({{$message->id}})">
+                                <p class="text-sm text-gray-600 dark:text-gray-400">{{\Illuminate\Support\Str::limit($message->message, 40, $end='...')}}</p>
+                                <span class="text-xs text-gray-400 font-semibold">{{$message->date_to_display}}</span>
+                            </div>
                         </div>
                     </div>
                    @else
@@ -59,8 +62,10 @@
                                 </span>
                             </div>
                             </div>
-                            <p wire:click="MessageToShow({{$message->id}})" class="text-sm text-gray-600 dark:text-gray-400">{{\Illuminate\Support\Str::limit($message->message, 40, $end='...')}}</p>
-                            <span wire:click="MessageToShow({{$message->id}})" class="text-xs text-gray-400 font-semibold">{{$message->date_to_display}}</span>
+                            <div wire:click="MessageToShow({{$message->id}})">
+                                <p class="text-sm text-gray-600 dark:text-gray-400">{{\Illuminate\Support\Str::limit($message->message, 40, $end='...')}}</p>
+                                <span class="text-xs text-gray-400 font-semibold">{{$message->date_to_display}}</span>
+                            </div>
                         </div>
                     </div>
                     @endif

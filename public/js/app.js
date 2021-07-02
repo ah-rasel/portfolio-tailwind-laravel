@@ -3886,6 +3886,7 @@ window.dataApp = function () {
       this.isProfileMenuOpen = false;
     },
     isPagesMenuOpen: false,
+    isUsersMenuOpen: false,
     togglePagesMenu: function togglePagesMenu() {
       this.isPagesMenuOpen = !this.isPagesMenuOpen;
     },

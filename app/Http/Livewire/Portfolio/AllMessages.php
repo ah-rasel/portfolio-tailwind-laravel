@@ -14,6 +14,7 @@ class AllMessages extends Component
     public $individualMessageOpen = false;
     public $orderBy = 'created_at';
     public $SortBy = 'DESC';
+    public $deleted_message = '';
     
     public function MessageToShow($id)
     {
@@ -35,7 +36,9 @@ class AllMessages extends Component
                 $this->individualMessageOpen = false;
                 $this->messageToOpen = '';
             }
+            $this->deleted_message = "Messasge from ".$message->name;
             $message->delete();
+            $this->emitSelf('message_deleted');
         } catch (\Exception $exception) { 
         }
     }

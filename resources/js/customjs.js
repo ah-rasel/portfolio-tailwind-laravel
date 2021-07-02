@@ -44,6 +44,7 @@ window.dataApp = () => {
                 this.isProfileMenuOpen = false
             },
             isPagesMenuOpen: false,
+            isUsersMenuOpen: false,
             togglePagesMenu() {
                 this.isPagesMenuOpen = !this.isPagesMenuOpen
             },

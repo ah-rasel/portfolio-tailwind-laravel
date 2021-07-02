@@ -1,17 +1,17 @@
 <div class="md:col-span-3 h-40 w-full">
     <div
-    x-data="{ messageSent: false}"
-    x-init="
-        @this.on('message-sent' , () =>{
-            setTimeout(()=> { messageSent = false }, 2500);
-            messageSent = true;
-        })
-    "
-    x-show.transition.out.duration.1000ms="messageSent"
-    style="display: none"
-    class="flex justify-center">
-        <span class="text-sm font-semibold text-green-400 text-center">
-        Thank you for your message ! I will Contact with you soon .</span>
+        x-data="{ messageSent: false}"
+        x-init="
+            @this.on('message-sent' , () =>{
+                setTimeout(()=> { messageSent = false }, 2500);
+                messageSent = true;
+            })
+        "
+        x-show.transition.out.duration.1000ms="messageSent"
+        style="display: none"
+        class="flex justify-center">
+            <span class="text-sm font-semibold text-green-400 text-center">
+            Thank you for your message ! I will Contact with you soon .</span>
     </div>
     <form wire:submit.prevent="SendMessage" method="POST" action="" class="space-y-2">
         @csrf

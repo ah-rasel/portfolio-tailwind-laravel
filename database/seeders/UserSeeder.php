@@ -17,10 +17,11 @@ class UserSeeder extends Seeder
     {
         $users = [
             [
-                'name' => "Azijul Hakim Rasel",
-                'email' => 'azharasel@gmail.com',
+                'id'             => 1,
+                'name'           => 'Admin',
+                'email'          => 'azharasel@gmail.com',
                 'email_verified_at' => now(),
-                'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+                'password'       => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
                 'remember_token' => Str::random(10),
             ]
         ];
