@@ -25,6 +25,7 @@ class AddUser extends Component
         $user = User::create([
             'name'=>$this->name,
             'email'=>$this->email,
+            'email_verified_at'=>now(),
             'password'=>Hash::make($this->password),
         ]);
         $user->roles()->sync($this->selected);
