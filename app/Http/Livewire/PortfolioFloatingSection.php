@@ -3,13 +3,19 @@
 namespace App\Http\Livewire;
 
 use App\Models\Action;
+use Illuminate\Support\Facades\Gate;
 use Livewire\Component;
 
 class PortfolioFloatingSection extends Component
 {
     public $data,$data1;
     public $edit_experience_1,$edit_experience_2,$edit_experience_3;
-
+    public function mount()
+    {
+        if(Gate::denies('portfolio_access')){
+            redirect()->route('dashboard');
+        }
+    }
     protected $rules = [
         'data.experience_1_title' => 'required|string',
         'data.experience_2_title' => 'required|string',
@@ -37,6 +43,6 @@ class PortfolioFloatingSection extends Component
     public function render()
     {
         $this->getData();
-        return view('livewire.portfolio-floating-section');
+        return view('livewire.portfolio-floating-section')->extends('portfolio.portfolio')->section('portfolioContent');
     }
 }

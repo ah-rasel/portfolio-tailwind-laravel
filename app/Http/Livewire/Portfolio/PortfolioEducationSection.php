@@ -63,6 +63,6 @@ class PortfolioEducationSection extends Component
     public function render()
     {
         $this->getData();
-        return view('livewire.portfolio.portfolio-education-section');
+        return view('livewire.portfolio.portfolio-education-section')->extends('portfolio.portfolio')->section('portfolioContent');
     }
 }

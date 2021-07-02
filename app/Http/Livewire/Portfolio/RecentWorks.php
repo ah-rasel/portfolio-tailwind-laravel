@@ -150,6 +150,6 @@ class RecentWorks extends Component
     public function render()
     {
         $this->getData();
-        return view('livewire.portfolio.recent-works');
+        return view('livewire.portfolio.recent-works')->extends('portfolio.portfolio')->section('portfolioContent');
     }
 }

@@ -10,9 +10,6 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        if(Gate::denies('dashboard_access')){
-           return redirect()->route('posts.show');
-        }
         return view('dashboard');
     }
 }

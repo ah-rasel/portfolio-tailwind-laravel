@@ -88,6 +88,6 @@ class OfferSection extends Component
     public function render()
     {
         $this->getData();
-        return view('livewire.portfolio.offer-section');
+        return view('livewire.portfolio.offer-section')->extends('portfolio.portfolio')->section('portfolioContent');
     }
 }

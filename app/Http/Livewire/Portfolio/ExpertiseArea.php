@@ -75,6 +75,6 @@ class ExpertiseArea extends Component
     public function render()
     {
         $this->getData();
-        return view('livewire.portfolio.expertise-area');
+        return view('livewire.portfolio.expertise-area')->extends('portfolio.portfolio')->section('portfolioContent');
     }
 }

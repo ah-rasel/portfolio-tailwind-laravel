@@ -58,6 +58,6 @@ class ContactSection extends Component
     public function render()
     {
         $this->getData();
-        return view('livewire.portfolio.contact-section');
+        return view('livewire.portfolio.contact-section')->extends('portfolio.portfolio')->section('portfolioContent');
     }
 }

@@ -41,6 +41,6 @@ class PortfolioHeaderSection extends Component
     public function render()
     {
         $this->getData();
-        return view('livewire.portfolio.portfolio-header-section');
+        return view('livewire.portfolio.portfolio-header-section')->extends('portfolio.portfolio')->section('portfolioContent');
     }
 }

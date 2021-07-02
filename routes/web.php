@@ -17,6 +17,14 @@ use App\Http\Livewire\Permission\EditRole;
 use App\Http\Livewire\Permissions;
 use App\Http\Livewire\Portfolio\AllMessages;
 use App\Http\Livewire\Portfolio\Cmd\CmdPage;
+use App\Http\Livewire\Portfolio\ContactSection;
+use App\Http\Livewire\Portfolio\ExpertiseArea;
+use App\Http\Livewire\Portfolio\OfferSection;
+use App\Http\Livewire\Portfolio\PortfolioEducationSection;
+use App\Http\Livewire\Portfolio\PortfolioHeaderSection;
+use App\Http\Livewire\Portfolio\RecentWorks;
+use App\Http\Livewire\PortfolioFloatingSection;
+use App\Http\Livewire\PortfolioIntroSection;
 use App\Http\Livewire\Roles;
 use App\Http\Livewire\User\Category\ViewCategories;
 use App\Http\Livewire\User\Post\AllPosts as PostAllPosts;
@@ -43,14 +51,14 @@ Route::get('/blog',PostAllPosts::class)->name('posts.show');
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');
     Route::prefix('portfolio')->group(function () {
-        Route::view('/','portfolio.portfolio_header')->name('portfolio');
-        Route::view('/floating','portfolio.portfolio_floating')->name('portfolio.floating');
-        Route::view('/intro','portfolio.portfolio_intro')->name('portfolio.intro');
-        Route::view('/qualification','portfolio.portfolio_qualification')->name('portfolio.qualification');
-        Route::view('/offer','portfolio.portfolio_offer')->name('portfolio.offer');
-        Route::view('/experience','portfolio.portfolio_expertise')->name('portfolio.expertise');
-        Route::view('/work','portfolio.portfolio_work')->name('portfolio.work');
-        Route::view('/contact','portfolio.portfolio_contact')->name('portfolio.contact');
+        Route::get('/',PortfolioHeaderSection::class)->name('portfolio');
+        Route::get('/floating',PortfolioFloatingSection::class)->name('portfolio.floating');
+        Route::get('/intro',PortfolioIntroSection::class)->name('portfolio.intro');
+        Route::get('/qualification',PortfolioEducationSection::class)->name('portfolio.qualification');
+        Route::get('/offer',OfferSection::class)->name('portfolio.offer');
+        Route::get('/experience',ExpertiseArea::class)->name('portfolio.expertise');
+        Route::get('/work',RecentWorks::class)->name('portfolio.work');
+        Route::get('/contact',ContactSection::class)->name('portfolio.contact');
     });
     
     Route::prefix('admin')->group(function (){
@@ -65,16 +73,20 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::get('/categories',AllCategories::class)->name('admin.category.index');
         Route::get('/category/create',AddNewCategory::class)->name('category.create');
         Route::get('/category/{category}/edit',EditCategory::class)->name('category.edit');
+
+        Route::get('/users',Users::class)->name('admin.users.index');
+        Route::get('/user/create',AddUser::class)->name('admin.users.create');
+        Route::get('/user/{user}/edit',EditUser::class)->name('admin.users.edit');
+        // Roles
+        Route::get('/role/create',AddRoles::class)->name('admin.roles.create');
+        Route::get('/roles',Roles::class)->name('admin.roles.index');
+        Route::get('/role/{role}/edit',EditRole::class)->name('admin.roles.edit');
+        // Permissions
+        Route::get('/permissions',Permissions::class)->name('admin.permissions.index');
+        Route::get('/permission/create',AddPermission::class)->name('admin.permissions.create');
     });
-    Route::get('/users',Users::class)->name('admin.users.index');
-    Route::get('/user/create',AddUser::class)->name('admin.users.create');
-    Route::get('/user/{user}/edit',EditUser::class)->name('admin.users.edit');
-    Route::get('/role/create',AddRoles::class)->name('admin.roles.create');
-    Route::get('/roles',Roles::class)->name('admin.roles.index');
-    Route::get('/role/{role}/edit',EditRole::class)->name('admin.roles.edit');
     
-    Route::get('/permissions',Permissions::class)->name('admin.permissions.index');
-    Route::get('/permission/create',AddPermission::class)->name('admin.permissions.create');
+
 
 });
 

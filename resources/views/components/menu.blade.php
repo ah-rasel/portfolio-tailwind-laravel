@@ -4,7 +4,6 @@
     </a>
     <!-- First item in the list -->
     <ul class="mt-6">
-        @can('dashboard_access')
         <li class="relative px-6 py-3">
             <!-- Active menu -->
             @if(url()->current() == route('dashboard'))
@@ -23,12 +22,11 @@
                 <span class="ml-4">Dashboard</span>
             </a>
         </li>
-        @endcan
     </ul>
 
     <!-- rest of the menu -->
     <ul>
-        @can('profile_access')
+        
             <li class="relative px-6 py-3">
             {{-- @if(url()->current() == route('dashboard'))
                     <span class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
@@ -44,7 +42,7 @@
                     <span class="ml-4">Profile</span>
                 </a>
             </li>
-        @endcan
+
         @can('portfolio_access')
             <li class="relative px-6 py-3">
             @if(Request::segment(1) === 'portfolio')

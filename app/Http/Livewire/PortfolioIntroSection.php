@@ -3,13 +3,19 @@
 namespace App\Http\Livewire;
 
 use App\Models\Action;
+use Illuminate\Support\Facades\Gate;
 use Livewire\Component;
 
 class PortfolioIntroSection extends Component
 {
     public $data,$data1;
     public $edit_intro_slug,$edit_intro_title,$edit_intro_description,$edit_interest_title,$edit_interests;
-
+    public function mount()
+    {
+        if(Gate::denies('portfolio_access')){
+            redirect()->route('dashboard');
+        }
+    }
     protected $rules = [
         'data.greeting' => 'required|string',
         'data.display_name' => 'required|string',
@@ -35,6 +41,6 @@ class PortfolioIntroSection extends Component
     public function render()
     {
         $this->getData();
-        return view('livewire.portfolio-intro-section');
+        return view('livewire.portfolio-intro-section')->extends('portfolio.portfolio')->section('portfolioContent');
     }
 }
