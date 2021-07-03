@@ -32,19 +32,16 @@
            x-transition:leave="transition ease-in-out duration-150" x-transition:leave-start="opacity-100"
            x-transition:leave-end="opacity-0 transform -translate-x-20" @click.away="closeSideMenu"
            @keydown.escape="closeSideMenu">
-        <div class="py-4 text-gray-500 dark:text-gray-400">
-            <!-- <a class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200" href="#">
-                Admin Template
-            </a> -->
+        <div class="py-4 text-gray-500 dark:text-gray-400" x-data="{home:false,contact:false,intro:false,education:false,services:false,portfolio:false}">
             <!-- First item in the list -->
             <ul class="mt-6">
-                <li class="relative px-6 py-3">
-                    <!-- Active menu             -->
-                    <span class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
+                <li class="relative px-6 py-3" @click="home=true,intro=education=services=portfolio=contact=false">
+                    <template x-if="home">
+                        <span class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
                           aria-hidden="true"></span>
-
+                    </template>
                     <a class="inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100"
-                       href="/">
+                       href="/#home">
                         <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
                              stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                             <path
@@ -57,21 +54,86 @@
             </ul>
             <!-- rest of the menu -->
             <ul>
-                <li class="relative px-6 py-3">
+                <li class="relative px-6 py-3" @click="intro=true,home=education=services=portfolio=contact=false">
+                    <template x-if="intro">
+                        <span class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
+                          aria-hidden="true"></span>
+                    </template>
                     <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150
-            hover:text-gray-800 dark:hover:text-gray-200" href="#">
+                        hover:text-gray-800 dark:hover:text-gray-200" href="/#intro">
                         <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
                              stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                            <path
-                                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01">
-                            </path>
+                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2" />
+                            </svg>
+                        <span class="ml-4">My Intro</span>
+                    </a>
+                </li>
+                <li class="relative px-6 py-3" @click="education=true,home=intro=services=portfolio=contact=false">
+                    <template x-if="education">
+                        <span class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
+                          aria-hidden="true"></span>
+                    </template>
+                    <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150
+                        hover:text-gray-800 dark:hover:text-gray-200" href="/#education">
+                        <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
+                             stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                             <path d="M12 14l9-5-9-5-9 5 9 5z" />
+                             <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" /> 
                         </svg>
-                        <span class="ml-4">About Us</span>
+                        <span class="ml-4">Education</span>
+                    </a>
+                </li>
+                <li class="relative px-6 py-3" @click="services=true,home=intro=education=portfolio=contact=false">
+                    <template x-if="services">
+                        <span class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
+                          aria-hidden="true"></span>
+                    </template>
+                    <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150
+                        hover:text-gray-800 dark:hover:text-gray-200" href="/#services">
+                        <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
+                             stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                        <span class="ml-4">Services</span>
+                    </a>
+                </li>
+                <li class="relative px-6 py-3" @click="portfolio=true,home=intro=education=services=contact=false">
+                    <template x-if="portfolio">
+                        <span class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
+                          aria-hidden="true"></span>
+                    </template>
+                    <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150
+                            hover:text-gray-800 dark:hover:text-gray-200" href="/#portfolio">
+                        <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
+                             stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" />
+                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z" /> 
+                        </svg>
+                        <span class="ml-4">Portfolio</span>
+                    </a>
+                </li>
+                <li class="relative px-6 py-3" @click="contact=true,home=intro=education=services=portfolio=false">
+                    <template x-if="contact">
+                        <span class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
+                          aria-hidden="true"></span>
+                    </template>
+                    <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150
+                            hover:text-gray-800 dark:hover:text-gray-200" href="/#contact">
+                        <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
+                             stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                        </svg>
+                        <span class="ml-4">Contact</span>
                     </a>
                 </li>
                 <li class="relative px-6 py-3">
+                    @if(url()->current() == route('posts.show'))
+                    <span class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
+                          aria-hidden="true"></span>
+                    @endif
                     <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150
-            hover:text-gray-800 dark:hover:text-gray-200" href="{{ route('posts.show') }}">
+                            hover:text-gray-800 dark:hover:text-gray-200" href="{{route('posts.show')}}">
                         <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
                              stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                             <path
@@ -81,56 +143,16 @@
                         <span class="ml-4">Blog</span>
                     </a>
                 </li>
-                <li class="relative px-6 py-3">
-                    <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150
-            hover:text-gray-800 dark:hover:text-gray-200" href="#">
-                        <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
-                             stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                            <path
-                                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01">
-                            </path>
-                        </svg>
-                        <span class="ml-4">Contact</span>
-                    </a>
-                </li>
-                <li class="relative px-6 py-3">
-                    <button
-                        class="inline-flex items-center justify-between w-full text-sm font-semibold transition-colors duration-150 focus:outline-none hover:text-gray-800 dark:hover:text-gray-200"
-                        @click="togglePagesMenu" aria-haspopup="true">
-                            <span class="inline-flex items-center">
-                                <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
-                                     stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path
-                                        d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z">
-                                    </path>
-                                </svg>
-                                <span class="ml-4">categories</span>
-                            </span>
-                        <svg class="w-4 h-4" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd"
-                                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                  clip-rule="evenodd"></path>
-                        </svg>
-                    </button>
-                    <template x-if="isPagesMenuOpen">
-                        <ul x-transition:enter="transition-transform transition-opacity ease-in-out duration-700"
-                            x-transition:enter-start="opacity-0 transform translate-y-4"
-                            x-transition:enter-end="opacity-100 transform translate-y-0"
-                            x-transition:leave="transition ease-in duration-300"
-                            x-transition:leave-end="opacity-0 transform -translate-y-2"
-                            class="p-2 mt-2 space-y-2 overflow-hidden text-xs tracking-wide font-medium text-gray-500 rounded-md shadow-inner bg-gray-50 dark:text-gray-400 dark:bg-gray-900"
-                            aria-label="submenu">
-                            <li
-                                class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
-                                <a class="w-full" href="#">Add New Category</a>
-                            </li>
-                            <li
-                                class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
-                                <a class="w-full" href="#">View All Categories</a>
-                            </li>
-                        </ul>
-                    </template>
-                </li>
+                @guest
+                    <li class="relative px-6 py-3">
+                        <div class="flex text-xs space-x-3">
+                            <div><a href="{{route('login')}}" class="font-semibold">Login</a></div>
+                            <div><a href="{{route('register')}}" class="bg-purple-600 hover:bg-purple-500 shadow-sm text-white hover:text-gray-50 px-6 pt-1.5 pb-2 font-semibold rounded-full">Register</a></span>
+                        </div>
+                    </li>
+                @else
+                    <x-logout />
+                @endguest
             </ul>
         </div>
     </aside>
@@ -157,12 +179,12 @@
                     <li class="hidden md:block text-sm font-semibold">
                         <div class="group cursor-pointer">
                             <div class="flex flex-col relative">
-                                <a href="/">
+                                <a href="/#home">
                                     Home
                                 </a>
                                 <span
-                                    class="absolute transform opacity-100 translate-y-6 transition-transform ease-in-out duration-500 cursor-pointer rounded-full w-full h-0.5 bg-purple-600">
-                                    </span>
+                                    class="absolute transform opacity-0 group-hover:opacity-100 -translate-x-3 group-hover:translate-x-0 translate-y-6 transition-transform ease-in-out duration-600 cursor-pointer rounded-full w-full h-0.5 bg-purple-600">
+                                </span>
                             </div>
                         </div>
                     </li>
@@ -174,6 +196,18 @@
                                 </a>
                                 <span
                                     class="absolute transform opacity-0 group-hover:opacity-100 -translate-x-3 group-hover:translate-x-0 translate-y-6 transition-transform ease-in-out duration-600 cursor-pointer rounded-full w-full h-0.5 bg-purple-600">
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="hidden md:block text-sm font-semibold">
+                        <div class="group">
+                            <div class="flex flex-col relative">
+                                <a href="/#education">
+                                    Education
+                                </a>
+                                <span
+                                    class="absolute transform opacity-0 group-hover:opacity-100 -translate-x-3 group-hover:translate-x-0 translate-y-6 transition-transform ease-in-out duration-600 cursor-pointer rounded-full w-full h-0.5 bg-purple-600">
                                     </span>
                             </div>
                         </div>
@@ -181,7 +215,7 @@
                     <li class="hidden md:block text-sm font-semibold">
                         <div class="group">
                             <div class="flex flex-col relative">
-                                <a href="#">
+                                <a href="/#services">
                                     Services
                                 </a>
                                 <span
@@ -193,7 +227,7 @@
                     <li class="hidden md:block text-sm font-semibold">
                         <div class="group">
                             <div class="flex flex-col relative">
-                                <a href="#">
+                                <a href="/#portfolio">
                                     Portfolio
                                 </a>
                                 <span
@@ -205,12 +239,12 @@
                     <li class="hidden md:block text-sm font-semibold">
                         <div class="group">
                             <div class="flex flex-col relative">
-                                <a href="#">
-                                    Testimonial
+                                <a href="/#contact">
+                                    Contact
                                 </a>
                                 <span
                                     class="absolute transform opacity-0 group-hover:opacity-100 -translate-x-3 group-hover:translate-x-0 translate-y-6 transition-transform ease-in-out duration-600 cursor-pointer rounded-full w-full h-0.5 bg-purple-600">
-                                    </span>
+                                </span>
                             </div>
                         </div>
                     </li>
@@ -220,9 +254,15 @@
                                 <a href="{{route('posts.show')}}">
                                     Blog
                                 </a>
+                                @if (url()->current() == route('posts.show'))
+                                <span
+                                class="absolute transform  translate-y-6 transition-transform ease-in-out duration-600 cursor-pointer rounded-full w-full h-0.5 bg-purple-600">
+                                </span>
+                                @else
                                 <span
                                     class="absolute transform opacity-0 group-hover:opacity-100 -translate-x-3 group-hover:translate-x-0 translate-y-6 transition-transform ease-in-out duration-600 cursor-pointer rounded-full w-full h-0.5 bg-purple-600">
-                                    </span>
+                                </span>
+                                @endif
                             </div>
                         </div>
                     </li>
@@ -248,78 +288,10 @@
                     </li>
             @auth
                     <!-- Profile menu -->
-                    <li class="relative">
-                        <button class="align-middle rounded-full focus:shadow-outline-purple focus:outline-none"
-                                @click="toggleProfileMenu" @keydown.escape="closeProfileMenu" aria-label="Account"
-                                aria-haspopup="true">
-                            @if(Laravel\Jetstream\Jetstream::managesProfilePhotos())
-                                <img class="object-cover object-top w-8 h-8 rounded-full" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}"
-                                     aria-hidden="true" />
-                            @else
-                                <img class="object-cover object-top w-8 h-8 rounded-full" src="images/rasel.jpg" alt="{{ Auth::user()->name }}" aria-hidden="true" />
-
-                            @endif
-                        </button>
-                        <template x-if="isProfileMenuOpen">
-                            <ul x-transition:leave="transition ease-in duration-150"
-                                x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
-                                @click.away="closeProfileMenu" @keydown.escape="closeProfileMenu"
-                                class="absolute right-0 w-56 p-2 mt-2 space-y-2 text-gray-600 bg-white border border-gray-100 rounded-md shadow-md dark:border-gray-700 dark:text-gray-300 dark:bg-gray-700"
-                                aria-label="submenu">
-                                <li class="flex">
-                                    <a class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
-                                       href="#">
-                                        <svg class="w-4 h-4 mr-3" aria-hidden="true" fill="none"
-                                             stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                             viewBox="0 0 24 24" stroke="currentColor">
-                                            <path
-                                                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z">
-                                            </path>
-                                        </svg>
-                                        <span>Profile</span>
-                                    </a>
-                                </li>
-                                <li class="flex">
-                                    <a class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
-                                       href="#">
-                                        <svg class="w-4 h-4 mr-3" aria-hidden="true" fill="none"
-                                             stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                             viewBox="0 0 24 24" stroke="currentColor">
-                                            <path
-                                                d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z">
-                                            </path>
-                                            <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                        </svg>
-                                        <span>Settings</span>
-                                    </a>
-                                </li>
-                                <li class="flex">
-                                    <a class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
-                                       href="#"
-                                       onclick="event.preventDefault();
-                         document.getElementById('logout-form').submit();"
-                                    >
-                                        <svg class="w-4 h-4 mr-3" aria-hidden="true" fill="none"
-                                             stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                             viewBox="0 0 24 24" stroke="currentColor">
-                                            <path
-                                                d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1">
-                                            </path>
-                                        </svg>
-
-                                        <span>Log out</span>
-
-                                    </a>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </li>
-                            </ul>
-                        </template>
-                    </li>
+                    <x-profile />
             @else
                     <li class="hidden md:block  text-sm font-semibold space-x-2">
-                        <a href="{{route('login')}}" class="text-gray-600">
+                        <a href="{{route('login')}}" class="text-gray-600 dark:text-gray-300">
                         Login
                         </a>
 
@@ -335,7 +307,7 @@
             <!-- Sidebar Social icon -->
             <div class="hidden md:block absolute text-gray-600 dark:text-gray-200">
                 <div class="fixed md:top-48 ml-4 space-y-3">
-                    <a href="#" target="_blank"
+                    <a href="https://www.facebook.com/azharasel1" target="_blank"
                        class="w-8 h-8
                     flex justify-center items-center
                     transform transition-all duration-500 ease-in-out
@@ -343,7 +315,7 @@
                        title="Facebook Profile">
                         <i class="fab fa-facebook-f text-lg"></i>
                     </a>
-                    <a href="#" target="_blank"
+                    <a href="https://twitter.com/azharasel1" target="_blank"
                        class="w-8 h-8
                     flex justify-center items-center
                     transform transition-all duration-500 ease-in-out
@@ -351,7 +323,7 @@
                        title="Facebook Profile">
                         <i class="fab fa-twitter -f text-lg"></i>
                     </a>
-                    <a href="#" target="_blank"
+                    <a href="https://github.com/ah-rasel?tab=repositories" target="_blank"
                        class="w-8 h-8
                     flex justify-center items-center
                     transform transition-all duration-500 ease-in-out
@@ -359,7 +331,7 @@
                        title="Facebook Profile">
                         <i class="fab fa-github -f text-lg"></i>
                     </a>
-                    <a href="#" target="_blank"
+                    <a href="https://www.linkedin.com/in/md-rasel-641371167/" target="_blank"
                        class="w-8 h-8
                     flex justify-center items-center
                     transform transition-all duration-500 ease-in-out

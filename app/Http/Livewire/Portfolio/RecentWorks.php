@@ -136,10 +136,12 @@ class RecentWorks extends Component
     }
     public function Delete($arr,$key)
     {
-        try {
-            Storage::disk('portfolio')->delete($this->data[$arr][$key]['image']);
-        }
-        catch (\ErrorException $errorException){
+        if($arr !='recent_work_groups'){
+            try {
+                Storage::disk('portfolio')->delete($this->data[$arr][$key]['image']);
+            }
+            catch (\ErrorException $errorException){
+            }
         }
         unset($this->data[$arr][$key]);
         $data_temp = serialize($this->data);

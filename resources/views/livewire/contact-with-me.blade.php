@@ -19,7 +19,7 @@
             <div class="flex flex-col text-sm md:px-2 w-full">
                 <label for="" class="px-1 text-sm font-semibold">Name</label>
                 <input wire:model="name" type="text" placeholder="Christopher Nolan"
-                       class="bg-transparent ring-1 mt-2 ring-gray-200 dark:ring-gray-500
+                       class="bg-transparent placeholder-gray-500 dark:placeholder-gray-400 ring-1 mt-2 ring-gray-200 dark:ring-gray-500
                             focus:ring-indigo-600 focus:outline-none rounded-md px-2 w-full py-1.5">
             @error('name') <span class="text-xs font-semibold text-red-600 dark:text-red-400">{{ $message }}</span>
             @enderror
@@ -27,7 +27,7 @@
             <div class="flex flex-col text-sm mt-2 md:mt-0 md:px-2 w-full space-y-2">
                 <label for="" class="px-1 text-sm font-semibold">Email</label>
                 <input wire:model="email" type="email" placeholder="yourmail@mail.com"
-                       class="bg-transparent ring-1  mt-2 ring-gray-200 dark:ring-gray-500
+                       class="bg-transparent placeholder-gray-500 dark:placeholder-gray-400 ring-1  mt-2 ring-gray-200 dark:ring-gray-500
                             focus:ring-indigo-600 focus:outline-none rounded-md px-2 w-full py-1.5">
                 @error('email') <span class="text-xs font-semibold text-red-600 dark:text-red-400">{{ $message }}</span>
                 @enderror
@@ -37,7 +37,7 @@
         <div class="md:px-2">
             <label for="" class="px-1 text-sm font-semibold">Message</label>
             <textarea wire:model="message" name="" id="" cols="30" rows="4"
-                      class="bg-transparent ring-1 mt-2 ring-gray-200 dark:ring-gray-500
+                      class="bg-transparent placeholder-gray-500 dark:placeholder-gray-400 ring-1 mt-2 ring-gray-200 dark:ring-gray-500
                         focus:ring-indigo-600 focus:outline-none rounded-md px-2 w-full py-1.5" placeholder="Your message"></textarea>
             @error('message') <span class="text-xs font-semibold text-red-600 dark:text-red-400">{{ $message }}</span>
             @enderror

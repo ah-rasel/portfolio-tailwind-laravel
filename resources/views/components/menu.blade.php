@@ -1,5 +1,5 @@
 <div class="py-4 text-gray-500 dark:text-gray-400">
-    <a class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200" href="#">
+    <a class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200" href="{{route('home')}}">
         Portfolio - Admin Panel
     </a>
     <!-- First item in the list -->
@@ -28,13 +28,8 @@
     <ul>
         
             <li class="relative px-6 py-3">
-            {{-- @if(url()->current() == route('dashboard'))
-                    <span class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
-                        aria-hidden="true">
-                </span>
-                @endif--}}
                 <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                href="/user/profile">
+                href="{{route('profile.show')}}e">
                     <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round"
                         stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
@@ -76,7 +71,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 4H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-2m-4-1v8m0 0l3-3m-3 3L9 8m-5 5h2.586a1 1 0 01.707.293l2.414 2.414a1 1 0 00.707.293h3.172a1 1 0 00.707-.293l2.414-2.414a1 1 0 01.707-.293H20" />
                     </svg>
                     
-                    <span class="ml-4">Inbox</span>
+                    <span class="ml-4">Inbox <span class="text-xs font-semibold ml-2 px-3 py-0.5 pb-1 text-white bg-gray-400 rounded-full">6</span></span>
                 </a>
             </li>
         @endcan
@@ -219,5 +214,6 @@
             </template>
         </li>
         @endcan
+        <x-logout />
     </ul>
 </div>

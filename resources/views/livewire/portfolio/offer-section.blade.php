@@ -14,7 +14,7 @@
     @if(!$edit_offer)
         <!-- Render When Not editing -->
         <p class="mr-4 text-gray-600 dark:text-gray-300">Slug :<span class="ml-1">{{$data['offer_slug']}}</span></p>
-        <p class="mr-4 text-gray-600 dark:text-gray-300">Title :<span class="ml-1 ">What I Of{{$data['offer_title']}}fer</span></p>
+        <p class="mr-4 text-gray-600 dark:text-gray-300">Title :<span class="ml-1 ">{{$data['offer_title']}}</span></p>
         @else
          <label for="slug" class="block text-sm font-semibold">Slug</label>
          <input wire:model.defer="data.offer_slug" id="slug" type="text" class="text-sm w-full bg-transparent outline-none ring-1 focus:ring-2 mt-2 px-2 py-1 rounded-sm">

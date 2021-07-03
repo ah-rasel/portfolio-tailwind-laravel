@@ -64,9 +64,9 @@
             @if($add_experience)
                 <div class="p-3 border shadow-sm rounded-md">
                     <div class="">
-                        <label for="degree" class="font-semibold text-sm block">Degree</label>
+                        <label for="degree" class="font-semibold text-sm block">Post</label>
                         <input wire:model.defer="edu_degree" id="degree" type="text" value="HSC" class="text-sm w-full bg-transparent outline-none ring-1 focus:ring-2 mt-2 px-2 py-1 rounded-sm">
-                        <label for="degree" class="font-semibold text-sm block">Department</label>
+                        <label for="degree" class="font-semibold text-sm block">Company</label>
                         <input wire:model.defer="edu_dept" id="degree" type="text" value="HSC" class="text-sm w-full bg-transparent outline-none ring-1 focus:ring-2 mt-2 px-2 py-1 rounded-sm">
                         <label for="degree" class="font-semibold text-sm block">Year</label>
                         <input wire:model.defer="edu_year" id="degree" type="text" value="HSC" class="text-sm w-full bg-transparent outline-none ring-1 focus:ring-2 mt-2 px-2 py-1 rounded-sm">

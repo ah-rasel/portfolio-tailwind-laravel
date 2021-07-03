@@ -24,8 +24,8 @@
           <a href="{{ route('posts.of.category',$post->category,) }}">{{$post->category->name}}</a>
           </div>
      </div>
-     <div class="text-gray-600 dark:text-gray-400 px-1 text-sm">
-      <article class="prose prose-sm">
+     <div class="px-1 text-sm">
+      <article class="prose prose-sm text-gray-600 dark:text-gray-300">
         @php
             echo($post->content);
         @endphp

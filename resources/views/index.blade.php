@@ -1,7 +1,7 @@
 @extends('layouts.user')
 @section('content')
     <!-- Top Section -->
-    <div class="bg-gray-50 dark:bg-gray-800">
+    <div id="home" class="bg-gray-50 dark:bg-gray-800">
         <div class="max-w-5xl mx-auto">
             <div class="md:grid md:grid-cols-2 md:content-center">
                 <!-- On Mobile Top Section -->
@@ -23,9 +23,8 @@
                                 class="hidden font-styled tracking-wider md:block text-sm text-purple-400 dark:text-purple-300">
                                 {{$data['greeting']}}
                             </span>
-{{--                        <h1 class="text-2xl md:text-4xl uppercase font-bold">Azijul Hakim Rasel</h1>--}}
                         <h1 class="text-2xl md:text-4xl uppercase font-bold">{{$data['display_name']}}</h1>
-                        <div class="relative mb-6" x-data="{
+                        <div class="relative mb-6 mt-1 md:mt-0.5" x-data="{
                     text: '',
                     textArray : ['{{$data['typing_title']}}'],
                     textIndex: 0,
@@ -68,10 +67,11 @@
                             <h5 class="absolute w-full text-sm text-gray-600 left-1/2 md:inset-0 transform -translate-x-1/2 md:translate-x-0 dark:text-gray-300 font-semibold"
                                 x-text="text"></h5>
                         </div>
-                        <div class="h-10 px-3 flex justify-center md:justify-start items-center overflow-hidden w-full border-l-4 border-r-4 border-purple-400 dark:border-purple-600 bg-gray-100 dark:bg-gray-700" title="My Favourite Line">
+                        <div class="h-10 px-3 flex justify-center md:justify-start items-center overflow-hidden w-full border-l-4 border-r-4 
+                        border-purple-400 dark:border-purple-600 bg-gray-100 dark:bg-gray-700 mt-8">
                             <h3 class="text-xs md:text-sm font-semibold text-gray-500 dark:text-gray-300">{{$data['favourite_quote']}}</h3>
                         </div>
-                        <div class="flex font-semibold text-xs md:text-sm space-x-4 py-4">
+                        <div class="flex mt-2 font-semibold text-xs md:text-sm space-x-4 py-4">
                             <a href="{{$data['top_button_1_link']}}" class="">
                                 <div class="flex bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded-lg text-white dark:text-gray-200 items-center space-x-3">
                                     <span>{{$data['top_button_1_text']}}</span>
@@ -88,37 +88,32 @@
                                     </svg>
                                 </div>
                             </a>
-
-
-
                         </div>
                     </div>
                     <!-- Icons -->
-                    <div class="md:hidden flex justify-center space-x-1 my-4">
+                    <div class="md:hidden flex justify-center space-x-1 mt-2 mb-6">
                         <a target="_blank"
                            class="w-8 h-8 flex justify-center items-center transform transition-all duration-500 hover:-translate-y-2 hover:scale-110 ease-in-out"
-                           href="#" title="Facebook Profile">
-                            <i class="text-sm fab fa-facebook-f"></i>
+                           href="https://www.facebook.com/azharasel1" title="Facebook Profile">
+                            <i class="text-md fab fa-facebook-f"></i>
                         </a>
                         <a target="_blank"
                            class="w-8 h-8 flex justify-center items-center transform transition-all duration-500 hover:-translate-y-2 hover:scale-110 ease-in-out"
-                           href="#" title="Facebook Profile">
-                            <i class="text-sm fab fa-twitter"></i>
+                           href="https://twitter.com/azharasel1" title="Facebook Profile">
+                            <i class="text-md fab fa-twitter"></i>
                         </a>
                         <a target="_blank"
                            class="w-8 h-8 flex justify-center items-center transform transition-all duration-500 hover:-translate-y-2 hover:scale-110 ease-in-out"
-                           href="#" title="Facebook Profile">
-                            <i class="text-sm fab fa-github"></i>
+                           href="https://github.com/ah-rasel" title="Facebook Profile">
+                            <i class="text-md fab fa-github"></i>
                         </a>
                         <a target="_blank"
                            class="w-8 h-8 flex justify-center items-center transform transition-all duration-500 hover:-translate-y-2 hover:scale-110 ease-in-out"
-                           href="#" title="Facebook Profile">
-                            <i class="text-sm fab fa-linkedin"></i>
+                           href="https://www.linkedin.com/in/md-rasel-641371167/" title="Facebook Profile">
+                            <i class="text-md fab fa-linkedin"></i>
                         </a>
 
                     </div>
-
-
                 </div>
                 <!-- Second grid in medium -->
                 <div class="flex items-center justify-center">
@@ -128,11 +123,10 @@
         </div>
     </div>
 
-
     <!-- Main Inside Container -->
     <!-- Ok -->
 
-    <div class="max-w-5xl md:rounded-full shadow-md md:mx-auto w-full md:-mt-14 text-gray-700 dark:text-gray-200">
+    <div class="max-w-5xl md:rounded-full shadow-md md:mx-auto w-full mb-2 md:mb-0 md:-mt-14 text-gray-700 dark:text-gray-200">
         <div class="grid grid-cols-3 relative bg-gray-100 dark:bg-gray-700 md:rounded-full justify-start items-center py-2 md:p-8">
             @for($i=1;$i<=3;$i++)
             <!-- Single Experience at TOP -->
@@ -152,43 +146,9 @@
                 </div>
             </div>
             @endfor
-      {{--      <!-- Single Experience at TOP -->
-            <div class="flex flex-col md:flex-row items-center md:space-x-2 space-y-2 md:space-y-0">
-                <div class="flex-shrink-0">
-                    <div class="flex w-7 h-7 md:h-10 md:w-10 justify-center items-center bg-purple-500 rounded-full">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 md:w-6 md:h-6 text-gray-50" fill="none"
-                             viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                  d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-                        </svg>
-                    </div>
-                </div>
-                <div class="text-center md:text-left">
-                    <h3 class="font-bold text-sm md:text-base">3+ Years</h3>
-                    <p class="text-gray-600 dark:text-gray-300 text-xs font-semibold md:text-sm">Development Experience</p>
-                </div>
-            </div>
-            <!-- Single Experience at TOP -->
-            <div class="flex flex-col md:flex-row items-center md:space-x-2 space-y-2 md:space-y-0">
-                <div class="flex-shrink-0">
-                    <div class="flex w-7 h-7 md:h-10 md:w-10 justify-center items-center bg-purple-500 rounded-full">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 md:w-6 md:h-6 text-gray-50" fill="none"
-                             viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                  d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-                        </svg>
-                    </div>
-                </div>
-                <div class="text-center md:text-left">
-                    <h3 class="font-bold text-sm md:text-base">3+ Years</h3>
-                    <p class="text-gray-600 dark:text-gray-300 text-xs font-semibold md:text-sm">Development Experience</p>
-                </div>
-            </div>--}}
-
         </div>
     </div>
 
-    <!-- Main PX -->
     <div class="container md:mt-4 px-3 mx-auto grid text-gray-700 dark:text-gray-200">
 
         <div id="intro" class="md:max-w-5xl md:mx-auto space-y-12 mb-36">
@@ -214,9 +174,10 @@
                             <h4 class="text-purple-400 text-xs font-semibold tracking-wide">{{$data['i_slug']}}</h4>
                             <h2 class="md:text-2xl text-xl font-bold">{{$data['i_title']}}</h2>
                         </div>
-                        <div class="text-justify text-gray-500 dark:text-gray-400 opacity-90">
-{{--                            I am a very simple and ordinary person . I am currently completing my graduation . After completing my study , my dream is to do something awesome to be--}}
-                            {{$data['i_des']}}
+                        <div class="text-justify text-sm md:text-base text-gray-600 dark:text-gray-400">
+                            @php
+                                echo($data['i_des']);
+                            @endphp
                         </div>
                         <div class="text-center md:text-left my-4">
                             <h2 class="md:text-2xl text-xl font-bold">{{$data['int_title']}}</h2>
@@ -264,7 +225,7 @@
 
             <!-- My Qualification Section -->
 
-            <div class="space-y-10">
+            <div id="education" class="space-y-10">
                 <div class="text-center">
                     <h4 class="text-purple-400 text-xs font-semibold tracking-wide">{{$data['edu_slug']}}</h4>
                     <h2 class="md:text-2xl text-xl font-bold">{{$data['edu_title']}}</h2>
@@ -379,7 +340,7 @@
 
             <!-- What I offer  -->
 
-            <div class="space-y-10">
+            <div id="services" class="space-y-10">
                 <div class="text-center">
                     <h4 class="text-purple-400 text-xs font-semibold tracking-wide">{{$data['offer_slug']}}</h4>
                     <h2 class="md:text-2xl text-xl font-bold">{{$data['offer_title']}}</h2>
@@ -402,13 +363,9 @@
                                                 flex justify-center items-center
                                                 shadow border
                                                 ">
-                                    <svg width="20" height="20" fill="currentColor"
-                                         class="text-white group-hover:text-purple-400">
-{{--                                        {{$offer['icon']}}--}}
                                         @php
                                         echo $offer['icon'];
                                         @endphp
-                                    </svg>
                                 </span>
                             </div>
                         </div>
@@ -459,9 +416,9 @@
                 </div>
             </div>
             <!-- Recent Works -->
-            @livewire('portfolio.home.recent-work-section',['data'=> $data_pass])
+            <div id="portfolio">@livewire('portfolio.home.recent-work-section',['data'=> $data_pass])</div>
             <!-- Contact -->
-            <div class="space-y-10">
+            <div id="contact" class="space-y-10">
                 <div class="text-center">
                     <h4 class="text-purple-400 text-xs font-semibold tracking-wide">{{$data['contact_slug']}}</h4>
                     <h2 class="md:text-2xl text-xl font-bold">{{$data['contact_title']}}</h2>
@@ -488,7 +445,7 @@
                                     <div class="flex flex-col space-y-1.5">
                                         <h3 class="text-sm font-bold ">Phone</h3>
                                         @foreach($data['contact_details']['phones'] as $phone_number)
-                                        <a href="tel:{{$phone_number}}" class="text-xs font-semibold md:text-sm text-gray-500">{{$phone_number}}</a>
+                                        <a href="tel:{{$phone_number}}" class="text-xs font-semibold md:text-sm text-gray-500 dark:text-gray-400">{{$phone_number}}</a>
                                         @endforeach
                                     </div>
                                 </div>
@@ -497,17 +454,15 @@
                                     <div class="flex-shrink-0">
                                         <div class="w-10 h-10 bg-purple-400 rounded-full text-white
                                                         flex justify-center items-center shadow " href="#" title="Twitter Profile">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                                                 @php
                                                     echo($data['contact_details']['email_icon']);
                                                 @endphp
-                                            </svg>
                                         </div>
                                     </div>
                                     <div class="flex flex-col space-y-1.5">
                                         <h3 class="text-sm font-bold ">Email</h3>
                                         @foreach($data['contact_details']['emails'] as $email)
-                                        <a href="mailto:{{$email}}" class="text-xs font-semibold md:text-sm text-gray-500">{{$email}}</a>
+                                        <a href="mailto:{{$email}}" class="text-xs font-semibold md:text-sm text-gray-500 dark:text-gray-400">{{$email}}</a>
                                         @endforeach
                                     </div>
                                 </div>
