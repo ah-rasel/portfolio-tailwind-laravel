@@ -22,7 +22,7 @@
                 <div class="flex-1 overflow-y-auto">
                 @foreach ($messages as $message)
                    @if ($message->read_status)
-                    <div class="group cursor-pointer">
+                    <div wire:poll.1000ms class="group cursor-pointer">
                         <div class="block px-6 pt-2.5 pb-3.5 dark:bg-gray-800 border-t border-t-gray-200 @if($messageToOpen && $messageToOpen->id == $message->id)border-l-4 border-l-blue-400 bg-white dark:bg-gray-900 @else bg-gray-100 @endif dark:border-t-gray-600 group-hover:bg-gray-200 dark:group-hover:bg-gray-900">
                             <div class="flex justify-between">
                                 <span wire:click="MessageToShow({{$message->id}})" class="text-sm font-semibold text-gray-900 dark:text-gray-200">{{$message->name}}</span>

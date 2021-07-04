@@ -1,4 +1,4 @@
-<div wire:poll class="p-5 rounded-md shadow bg-white dark:bg-gray-800">
+<div wire:poll.5s class="p-5 rounded-md shadow bg-white dark:bg-gray-800">
     <h4 class="font-bold">Recent Comments</h4>
     <div class="">
         <ul class="mt-2 space-y-1">

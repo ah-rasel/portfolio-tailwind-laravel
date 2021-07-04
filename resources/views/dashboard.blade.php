@@ -16,7 +16,7 @@
                         Users
                     </p>
                     <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                        10
+                        {{$users}}
                     </p>
                 </div>
             </div>
@@ -34,7 +34,7 @@
                         Categories
                     </p>
                     <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                        5
+                        {{$categories}}
                     </p>
                 </div>
             </div>
@@ -52,7 +52,7 @@
                         Posts
                     </p>
                     <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                        10
+                        {{$posts}}
                     </p>
                 </div>
             </div>
@@ -69,10 +69,10 @@
                 </div>
                 <div>
                     <p class="mb-2 text-sm font-medium text-gray-600 group-hover:text-gray-800 dark:text-gray-400 dark:group-hover:text-gray-400">
-                        New Comments
+                        New Messages
                     </p>
                     <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                        35
+                        {{$messages}}
                     </p>
                 </div>
             </div>

@@ -172,7 +172,21 @@
                     </svg>
                 </button>
                 <a href="{{url('/')}}">
-                    <h2 class="text-2xl font-bold">Md. Rasel</h2>
+                    <h2 class="md:hidden text-2xl font-bold ml-5">Md. Rasel</h2>
+                    <div class="ml-5 hidden md:block">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 225.28 221.44" class="h-10 w-10 text-purple-400">
+                            <g id="Layer_2" data-name="Layer 2">
+                                <g id="Layer_1-2" data-name="Layer 1">
+                                    <polygon fill="none" points="101.43 103.36 101.43 75.24 73.32 103.36 101.43 103.36"/>
+                                    <rect fill="none" x="117.01" y="71.28" width="30.45" height="32.08"/>
+                                    <path fill="currentColor" d="M167.56,156.92l-19.15-38h12.18a2.45,2.45,0,0,0,2.45-2.45V58.12a2.45,2.45,0,0,0-2.45-2.45H105.92c-.06,0-.1,0-.16,0h-1.88a2.42,2.42,0,0,0-2.35,1.94L73,86.15v-28a2.45,2.45,0,0,0-2.45-2.45H59.89a2.45,2.45,0,0,0-2.45,2.45V163.23a2.45,2.45,0,0,0,2.45,2.45H70.57A2.45,2.45,0,0,0,73,163.23V118.94h28.41v44.29a2.45,2.45,0,0,0,2.45,2.45h10.68a2.45,2.45,0,0,0,2.45-2.45V118.94h13.82l22.92,45.47a2.41,2.41,0,0,0,3.31,1.07l9.46-5.13A2.58,2.58,0,0,0,167.56,156.92Zm-66.13-53.56H73.32l28.11-28.12Zm46,0H117V71.28h30.45Z"/>
+                                    <rect fill="currentColor" x="-101" y="101.05" width="221.44" height="19.35" transform="translate(120.44 101) rotate(90)"/>
+                                    <rect fill="currentColor" x="137.86" y="64.19" width="147.72" height="19.35" rx="3.29" transform="translate(285.58 -137.86) rotate(90)"/>
+                                    <rect fill="currentColor" y="0.05" width="221.44" height="19.35" transform="translate(221.44 19.44) rotate(180)"/>
+                                    <rect fill="currentColor" y="202.05" width="221.44" height="19.35" rx="3.29" transform="translate(221.44 423.44) rotate(180)"/>
+                                    <circle fill="currentColor" class="cls-4" cx="212.05" cy="174.5" r="13.22"/></g></g>
+                        </svg>
+                    </div>
                 </a>
 
                 <ul class="flex items-center text-gray-600 dark:text-gray-200 flex-shrink-0 space-x-6">
