@@ -361,7 +361,7 @@
                                 class="absolute top-0 left-1/2 -translate-x-1/2 md:translate-x-0 md:left-8 transform -translate-y-1/2">
                                 <span class="w-12 h-12 bg-purple-400 group-hover:bg-white rounded-md
                                                 flex justify-center items-center
-                                                shadow border
+                                                shadow border group-hover:text-purple-400
                                                 ">
                                         @php
                                         echo $offer['icon'];
